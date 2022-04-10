@@ -23,9 +23,14 @@ dependencies:
   # Service
   dio: ^4.0.4
 
+  # Language
+  easy_localization: ^3.0.0 
+
+  # util
   auto_size_text: ^3.0.0
   flutter_svg: ^1.0.3
   lottie: ^1.2.2
+  flutter_rating_bar: ^4.0.0
 
   cupertino_icons: ^1.0.2
 
@@ -46,16 +51,32 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
+    - assets/lang/
 
   fonts:
     - family: Montserrat
       fonts:
         - asset: assets/fonts/Montserrat-Medium.ttf
+          weight: 500
         - asset: assets/fonts/Montserrat-MediumItalic.ttf
           style: italic
-          
-    - family: MontserratSemiBold
-      fonts:
+        - asset: assets/fonts/Montserrat-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Montserrat-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Montserrat-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 400
         - asset: assets/fonts/Montserrat-SemiBold.ttf
-        - asset: assets/fonts/Montserrat-SemiBoldItalic.ttf
-          style: italic
+          weight: 600
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Montserrat-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Montserrat-Black.ttf
+          weight: 900
+  
+
+

@@ -1,0 +1,13 @@
+{
+    "welcome": "Hoş Geldiniz",
+    "goodMorning": "Günaydın!",
+    "search": {
+        "findYour": "Uzmanını",
+        "specialist": "Bul",
+        "searchText": "Ara"
+    },
+    "departments": "Bölümler",
+    "seeAll": "Hepsini Gör",
+    "pharmacy": "Eczane",
+    "availableDoctors": "Müsait Doktorlar"
+}

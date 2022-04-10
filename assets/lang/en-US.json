@@ -1,0 +1,13 @@
+{
+    "welcome": "Welcome",
+    "goodMorning": "Good Morning!",
+    "search": {
+        "findYour": "Find Your",
+        "specialist": "Specialist",
+        "searchText": "Search"
+    },
+    "departments": "Departments",
+    "seeAll": "See All",
+    "pharmacy": "Pharmacy",
+    "availableDoctors": "Available Doctors"
+}

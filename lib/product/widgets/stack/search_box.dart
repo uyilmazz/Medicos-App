@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/constants/app_constant.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-import '../../../core/constants/color_constants.dart';
+import '../../../core/constants/app_constant.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../../core/init/language/locale_keys.g.dart';
 import '../textField/search_text_field.dart';
 
 class SearchBox extends StatelessWidget {
@@ -12,9 +12,7 @@ class SearchBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-            height: context.height * 0.22,
-            color: ColorConstants.transparentColor),
+        Container(height: context.height * 0.22, color: Colors.transparent),
         _searchTextAndTextField(context),
         _userNameAndSearchImage(context),
       ],
@@ -30,12 +28,12 @@ class SearchBox extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: context.normalValue, vertical: context.normalValue),
             decoration: BoxDecoration(
-                boxShadow: const [
+                boxShadow: [
                   BoxShadow(
-                      blurRadius: 1, color: ColorConstants.searchShadowColor)
+                      blurRadius: 1, color: context.theme.colorScheme.surface)
                 ],
                 borderRadius: BorderRadius.circular(context.normalValue),
-                color: ColorConstants.whiteColor),
+                color: context.theme.colorScheme.onSecondary),
             height: context.height * 0.17,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,12 +51,12 @@ class SearchBox extends StatelessWidget {
     return Wrap(
       direction: Axis.vertical,
       children: [
-        Text('Find Your',
+        Text(LocaleKeys.search_findYour.locale,
             style: context.textTheme.subtitle1!
-                .copyWith(fontSize: 18, fontWeight: FontWeight.w400)),
-        Text('Specialist',
+                .copyWith(fontSize: 18, fontWeight: FontWeight.w500)),
+        Text(LocaleKeys.search_specialist.locale,
             style: context.textTheme.subtitle2!
-                .copyWith(fontFamily: 'MontserratSemiBold', fontSize: 23)),
+                .copyWith(fontWeight: FontWeight.w600, fontSize: 23)),
       ],
     );
   }
@@ -73,15 +71,12 @@ class SearchBox extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text('Dev user',
-              style: context.textTheme.subtitle1!.copyWith(
-                  fontFamily: 'MontserratSemiBold',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500)),
+              style: context.textTheme.subtitle1!
+                  .copyWith(fontSize: 18, fontWeight: FontWeight.w500)),
           Container(
               child: Image.asset(AppConstants.searchImage.toImagePng),
               height: context.height * 0.13,
-              decoration:
-                  const BoxDecoration(color: ColorConstants.transparentColor))
+              decoration: const BoxDecoration(color: Colors.transparent))
         ],
       ),
     );
