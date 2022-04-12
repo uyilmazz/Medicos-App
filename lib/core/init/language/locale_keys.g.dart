@@ -11,5 +11,7 @@ abstract class  LocaleKeys {
   static const seeAll = 'seeAll';
   static const pharmacy = 'pharmacy';
   static const availableDoctors = 'availableDoctors';
+  static const categories = 'categories';
+  static const products = 'products';
 
 }

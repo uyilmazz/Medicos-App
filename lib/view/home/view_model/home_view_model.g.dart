@@ -56,6 +56,22 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
+  final _$getAllDepartmentsAtom =
+      Atom(name: '_HomeViewModelBase.getAllDepartments');
+
+  @override
+  List<Department>? get getAllDepartments {
+    _$getAllDepartmentsAtom.reportRead();
+    return super.getAllDepartments;
+  }
+
+  @override
+  set getAllDepartments(List<Department>? value) {
+    _$getAllDepartmentsAtom.reportWrite(value, super.getAllDepartments, () {
+      super.getAllDepartments = value;
+    });
+  }
+
   final _$_HomeViewModelBaseActionController =
       ActionController(name: '_HomeViewModelBase');
 
@@ -75,7 +91,8 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     return '''
 fakeDepartment: ${fakeDepartment},
 bottomNavigationBarIndex: ${bottomNavigationBarIndex},
-fakePharmacy: ${fakePharmacy}
+fakePharmacy: ${fakePharmacy},
+getAllDepartments: ${getAllDepartments}
     ''';
   }
 }

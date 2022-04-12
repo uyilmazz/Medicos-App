@@ -6,8 +6,8 @@ class FlexibleText extends Flexible {
       : super(
             key: key,
             child: Text(text,
-                style: context.textTheme.subtitle2!
-                    .copyWith(fontSize: 13, fontWeight: FontWeight.w500),
+                style: context.textTheme.headlineSmall!
+                    .copyWith(fontSize: 12, fontWeight: FontWeight.w500),
                 softWrap: false,
                 overflow: TextOverflow.ellipsis));
 

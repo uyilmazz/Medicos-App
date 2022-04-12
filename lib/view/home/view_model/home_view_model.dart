@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../model/department.dart';
+import '../../department/model/department.dart';
 import '../model/pharmacy.dart';
 import 'package:mobx/mobx.dart';
 import '../../../core/base/view_model/base_view_model.dart';
@@ -21,6 +21,9 @@ abstract class _HomeViewModelBase extends BaseViewModel with Store {
   @observable
   List<Pharmacy>? fakePharmacy;
 
+  @observable
+  List<Department>? getAllDepartments;
+
   @override
   void setContext(BuildContext context) {
     this.context = context;
@@ -30,6 +33,7 @@ abstract class _HomeViewModelBase extends BaseViewModel with Store {
   void init() {
     fakeDepartment = Department.getListFakeDepartment();
     fakePharmacy = Pharmacy.getFakePharmacyList();
+    getAllDepartments = Department.getAllFakeDepartments();
   }
 
   @action

@@ -4,8 +4,10 @@ import 'package:medicos_app/core/init/language/locale_keys.g.dart';
 import '../../../core/extensions/context_extension.dart';
 
 class SearchTextField extends StatelessWidget {
-  const SearchTextField({Key? key, this.onChanged}) : super(key: key);
+  const SearchTextField({Key? key, this.onChanged, this.customFillColor})
+      : super(key: key);
   final Function(String)? onChanged;
+  final Color? customFillColor;
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +19,17 @@ class SearchTextField extends StatelessWidget {
           fontWeight: FontWeight.w600),
       decoration: InputDecoration(
           filled: true,
-          fillColor: context.theme.scaffoldBackgroundColor,
+          fillColor: customFillColor ?? context.theme.scaffoldBackgroundColor,
           isDense: true,
           contentPadding: EdgeInsets.only(right: context.normalValue),
           enabledBorder: OutlineInputBorder(
               borderSide:
                   BorderSide(color: context.theme.scaffoldBackgroundColor),
-              borderRadius: BorderRadius.circular(context.lowValue)),
+              borderRadius: BorderRadius.circular(context.normalValue)),
           focusedBorder: OutlineInputBorder(
               borderSide:
                   BorderSide(color: context.theme.scaffoldBackgroundColor),
-              borderRadius: BorderRadius.circular(context.lowValue)),
+              borderRadius: BorderRadius.circular(context.normalValue)),
           prefixIcon: Icon(Icons.search,
               color: context.theme.colorScheme.onBackground,
               size: context.normalValue * 1.4),

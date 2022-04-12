@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:medicos_app/product/widgets/row/head_text_see_all.dart';
+import 'package:medicos_app/product/widgets/row/home_app.dart';
+import 'package:medicos_app/view/department/view/department_view.dart';
+import 'package:medicos_app/view/pharmacy/view/pharmacy_view.dart';
 import '../../../product/widgets/container/available_doctor_item.dart';
-import '../../../product/widgets/container/department_item.dart';
+import '../../../product/widgets/container/home_page_item.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -24,32 +28,7 @@ class HomePage extends StatelessWidget {
           bottomNavigationBar: _buildNavigationBar(context, homeViewModel),
           body: Padding(
             padding: context.appPadding,
-            child: Observer(
-                builder: (context) => SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          customAppbar(context),
-                          const SearchBox(),
-                          SizedBox(height: context.normalValue),
-                          _headTextAndSeeAll(context, LocaleKeys.departments),
-                          SizedBox(height: context.lowValue),
-                          _scroolMedicineItem(context, homeViewModel,
-                              homeViewModel.fakeDepartment),
-                          SizedBox(height: context.normalValue),
-                          _headTextAndSeeAll(context, LocaleKeys.pharmacy),
-                          SizedBox(height: context.normalValue),
-                          _scroolMedicineItem(context, homeViewModel,
-                              homeViewModel.fakePharmacy),
-                          SizedBox(height: context.mediumValue),
-                          _headTextAndSeeAll(
-                              context, LocaleKeys.availableDoctors),
-                          SizedBox(height: context.normalValue),
-                          _scroolDoctorItem(context, homeViewModel,
-                              homeViewModel.fakeDepartment),
-                          SizedBox(height: context.normalValue),
-                        ],
-                      ),
-                    )),
+            child: _setContent(context, homeViewModel),
           )),
     );
   }
@@ -99,33 +78,42 @@ class HomePage extends StatelessWidget {
         label: '');
   }
 
-  Row customAppbar(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(LocaleKeys.goodMorning.locale,
-            style: context.textTheme.headline5!.copyWith(
-                fontWeight: FontWeight.w500,
-                color: context.theme.colorScheme.primary)),
-        CircleAvatar(backgroundImage: AssetImage('profile'.toImagePng))
-      ],
-    );
-  }
+  Widget _setContent(BuildContext context, HomeViewModel homeViewModel) =>
+      Observer(builder: (context) {
+        return homeViewModel.bottomNavigationBarIndex == 0
+            ? _homeContent(context, homeViewModel)
+            : homeViewModel.bottomNavigationBarIndex == 1
+                ? DepartmentPage(department: homeViewModel.getAllDepartments)
+                : homeViewModel.bottomNavigationBarIndex == 2
+                    ? const PharmacyView()
+                    : const SizedBox();
+      });
 
-  Row _headTextAndSeeAll(BuildContext context, String headText) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(headText.locale,
-            style: context.textTheme.headline6!
-                .copyWith(fontWeight: FontWeight.w500)),
-        Text(LocaleKeys.seeAll.locale,
-            style: context.textTheme.subtitle1!.copyWith(
-                color: context.theme.colorScheme.onSurface.withAlpha(122),
-                fontWeight: FontWeight.w500)),
-      ],
-    );
-  }
+  Widget _homeContent(BuildContext context, HomeViewModel homeViewModel) =>
+      SingleChildScrollView(
+        child: Column(
+          children: [
+            HomeAppBar(imageUrl: 'profile'.toImagePng),
+            const SearchBox(),
+            SizedBox(height: context.normalValue),
+            const HeadAndSeeAllText(headText: LocaleKeys.departments),
+            SizedBox(height: context.lowValue),
+            _scroolMedicineItem(
+                context, homeViewModel, homeViewModel.fakeDepartment),
+            SizedBox(height: context.normalValue),
+            const HeadAndSeeAllText(headText: LocaleKeys.pharmacy),
+            SizedBox(height: context.normalValue),
+            _scroolMedicineItem(
+                context, homeViewModel, homeViewModel.fakePharmacy),
+            SizedBox(height: context.mediumValue),
+            const HeadAndSeeAllText(headText: LocaleKeys.availableDoctors),
+            SizedBox(height: context.normalValue),
+            _scroolDoctorItem(
+                context, homeViewModel, homeViewModel.fakeDepartment),
+            SizedBox(height: context.normalValue),
+          ],
+        ),
+      );
 
   Widget _scroolMedicineItem(
           BuildContext context, HomeViewModel homeViewModel, List? items) =>

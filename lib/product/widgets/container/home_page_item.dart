@@ -12,7 +12,7 @@ class HomePageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: context.lowValue),
-      width: context.width * 0.24,
+      width: context.width * 0.23,
       height: context.height * 0.15,
       decoration: BoxDecoration(
           boxShadow: [
@@ -27,7 +27,7 @@ class HomePageItem extends StatelessWidget {
               width: context.width * 0.14,
               height: context.height * 0.08,
               fit: BoxFit.fill),
-          SizedBox(height: context.lowValue),
+          SizedBox(height: context.normalValue),
           FlexibleText(medicineItem.name, context)
         ],
       ),
