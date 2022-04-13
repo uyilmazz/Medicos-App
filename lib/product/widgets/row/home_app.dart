@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:medicos_app/core/extensions/context_extension.dart';
 import 'package:medicos_app/core/extensions/string_extension.dart';
-
 import '../../../core/init/language/locale_keys.g.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({Key? key, this.trailing, required this.imageUrl})
+  const HomeAppBar({Key? key, required this.imageUrl, this.isShop = false})
       : super(key: key);
-  final Widget? trailing;
+
   final String imageUrl;
+  final bool isShop;
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +17,34 @@ class HomeAppBar extends StatelessWidget {
       children: [
         Text(LocaleKeys.goodMorning.locale,
             style: context.textTheme.headline5!.copyWith(
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w600,
                 color: context.theme.colorScheme.primary)),
-        CircleAvatar(
-            backgroundColor: context.theme.colorScheme.primary,
-            child: Image.asset(imageUrl, fit: BoxFit.fill))
+        isShop ? _shoppingIcon(context) : _profileAvatar(context)
       ],
+    );
+  }
+
+  Container _shoppingIcon(BuildContext context) {
+    return Container(
+      height: context.height * 0.05,
+      width: context.width * 0.1,
+      padding: const EdgeInsets.all(9.0),
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(colors: [
+            context.theme.colorScheme.primary,
+            context.theme.colorScheme.primary.withOpacity(0.6)
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+      child: Image.asset('shopping'.toIconPng, fit: BoxFit.fill),
+    );
+  }
+
+  Container _profileAvatar(BuildContext context) {
+    return Container(
+      height: context.height * 0.05,
+      width: context.width * 0.1,
+      decoration: const BoxDecoration(shape: BoxShape.circle),
+      child: Image.asset(imageUrl, fit: BoxFit.fill),
     );
   }
 }

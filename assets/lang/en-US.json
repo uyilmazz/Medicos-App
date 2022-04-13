@@ -11,5 +11,6 @@
     "pharmacy": "Pharmacy",
     "availableDoctors": "Available Doctors",
     "categories": "Categories",
-    "products": "Products"
+    "products": "Products",
+    "productDetail": "Product Detail"
 }

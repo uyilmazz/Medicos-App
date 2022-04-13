@@ -1,4 +1,4 @@
 abstract class MedicineModel {
-  late final String name;
-  late final String imageUrl;
+  late final String? name;
+  late final String? imageUrl;
 }
