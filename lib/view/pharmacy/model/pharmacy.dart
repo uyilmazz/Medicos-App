@@ -1,11 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'medicine_model.dart';
+import '../../home/model/medicine_model.dart';
+
 part 'pharmacy.g.dart';
 
 @JsonSerializable()
 class Pharmacy extends MedicineModel {
-  final String name;
-  final String imageUrl;
+  final String? name;
+  final String? imageUrl;
 
   Pharmacy(this.name, this.imageUrl);
 

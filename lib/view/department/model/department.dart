@@ -4,8 +4,8 @@ part 'department.g.dart';
 
 @JsonSerializable()
 class Department extends MedicineModel {
-  final String name;
-  final String imageUrl;
+  final String? name;
+  final String? imageUrl;
 
   Department(this.name, this.imageUrl);
 

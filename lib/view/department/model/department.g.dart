@@ -7,8 +7,8 @@ part of 'department.dart';
 // **************************************************************************
 
 Department _$DepartmentFromJson(Map<String, dynamic> json) => Department(
-      json['name'] as String,
-      json['imageUrl'] as String,
+      json['name'] as String?,
+      json['imageUrl'] as String?,
     );
 
 Map<String, dynamic> _$DepartmentToJson(Department instance) =>
