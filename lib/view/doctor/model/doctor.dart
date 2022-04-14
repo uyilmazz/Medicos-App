@@ -7,7 +7,7 @@ class Doctor {
   String? name;
   String? profileUrl;
   String? specialist;
-  double? experience;
+  int? experience;
   double? rate;
 
   Doctor(
@@ -45,9 +45,15 @@ class Doctor {
           specialist: 'Heart'),
       Doctor(
           name: "Ronald Richards",
-          experience: 2.5,
+          experience: 2,
           profileUrl: "ronald",
           rate: 3,
+          specialist: 'Heart'),
+      Doctor(
+          name: "Albert Flores",
+          experience: 2,
+          profileUrl: "albert",
+          rate: 2,
           specialist: 'Heart'),
     ];
   }

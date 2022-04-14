@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicos_app/product/widgets/container/icon_container.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/widgets/icon_button/back_arrow.dart';
 
@@ -17,7 +18,9 @@ class BackArrowAppBar extends StatelessWidget {
       children: [
         BackArrowButton(context),
         centerText != null ? _centerText(context) : const SizedBox(),
-        imageUrl != null ? _shoppingIcon(context) : _emptyContainer(context)
+        imageUrl != null
+            ? IconContainer(iconName: imageUrl!)
+            : _emptyContainer(context)
       ],
     );
   }
@@ -27,21 +30,6 @@ class BackArrowAppBar extends StatelessWidget {
         style: context.textTheme.headline6!.copyWith(
             fontWeight: FontWeight.bold,
             color: context.theme.colorScheme.primary));
-  }
-
-  Container _shoppingIcon(BuildContext context) {
-    return Container(
-      height: context.height * 0.05,
-      width: context.width * 0.1,
-      padding: const EdgeInsets.all(9.0),
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: LinearGradient(colors: [
-            context.theme.colorScheme.primary,
-            context.theme.colorScheme.primary.withOpacity(0.6)
-          ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-      child: Image.asset(imageUrl!, fit: BoxFit.fill),
-    );
   }
 
   Container _emptyContainer(BuildContext context) {

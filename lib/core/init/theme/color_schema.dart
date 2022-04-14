@@ -13,11 +13,11 @@ class CustomColorSchema {
       brightness: Brightness.light,
       primary: Color(0xFF06919D), // +
       onPrimary: Color(0xFFE8505B), // +
-      secondary: Colors.amber,
+      secondary: Colors.amber, // +
       onSecondary: Color(0xFFFFFFFF), // +
       error: Color(0xFFFA0A0A),
       onError: Color(0xFFA7979B), // +
-      background: Color(0xFF00FF00),
+      background: Color(0xFF73696C),
       onBackground: Color(0xFF828282), // +
       surface: Colors.black12, // +
       onSurface: Colors.black); // +

@@ -12,6 +12,7 @@ class AppTheme extends IAppTheme {
   AppTheme._init();
 
   ThemeData get theme => ThemeData(
+      iconTheme: IconThemeData(color: customColorSchema.colorScheme.onSurface),
       fontFamily: AppConstants.FONT_FAMILY,
       textTheme: customTextTheme.textTheme,
       scaffoldBackgroundColor: const Color(0xFFF9F9F9),
