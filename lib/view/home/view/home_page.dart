@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:medicos_app/product/widgets/row/head_text_see_all.dart';
-import 'package:medicos_app/product/widgets/row/home_app.dart';
-import 'package:medicos_app/view/department/view/department_view.dart';
-import 'package:medicos_app/view/pharmacy/view/pharmacy_view.dart';
+import '../../../product/widgets/row/head_text_see_all.dart';
+import '../../../product/widgets/row/home_app.dart';
+import '../../department/view/department_view.dart';
+import '../../pharmacy/view/pharmacy_view.dart';
 import '../../../product/widgets/container/available_doctor_item.dart';
 import '../../../product/widgets/container/home_page_item.dart';
 import '../../../core/base/view/base_widget.dart';

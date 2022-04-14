@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-import 'package:medicos_app/core/init/language/locale_keys.g.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../../core/init/language/locale_keys.g.dart';
 import '../../../core/extensions/context_extension.dart';
 
 class SearchTextField extends StatelessWidget {

@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import '../../department/model/department.dart';
-import '../../pharmacy/model/pharmacy.dart';
 import 'package:mobx/mobx.dart';
 import '../../../core/base/view_model/base_view_model.dart';
+import '../../department/model/department.dart';
+import '../../pharmacy/model/pharmacy.dart';
+
 part 'home_view_model.g.dart';
 
 class HomeViewModel = _HomeViewModelBase with _$HomeViewModel;

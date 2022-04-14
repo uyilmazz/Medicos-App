@@ -3,10 +3,12 @@ import '../../../core/constants/app_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
+import '../../../core/widgets/icon_button/back_arrow.dart';
 import '../textField/search_text_field.dart';
 
 class SearchBox extends StatelessWidget {
-  const SearchBox({Key? key}) : super(key: key);
+  const SearchBox({Key? key, this.isBack = false}) : super(key: key);
+  final bool isBack;
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +72,11 @@ class SearchBox extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Dev user',
-              style: context.textTheme.subtitle1!
-                  .copyWith(fontSize: 18, fontWeight: FontWeight.w500)),
+          isBack
+              ? BackArrowButton(context)
+              : Text('Dev user',
+                  style: context.textTheme.subtitle1!
+                      .copyWith(fontSize: 18, fontWeight: FontWeight.w500)),
           Container(
               child: Image.asset(AppConstants.searchImage.toImagePng),
               height: context.height * 0.13,

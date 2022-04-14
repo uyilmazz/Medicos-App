@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-import 'package:medicos_app/core/init/language/locale_keys.g.dart';
-import 'package:medicos_app/product/widgets/container/home_page_item.dart';
-import 'package:medicos_app/product/widgets/row/head_text_see_all.dart';
-import 'package:medicos_app/product/widgets/row/home_app.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../../core/init/language/locale_keys.g.dart';
+import '../../../product/widgets/container/home_page_item.dart';
+import '../../../product/widgets/row/head_text_see_all.dart';
+import '../../../product/widgets/row/home_app.dart';
 import '../../../product/widgets/stack/search_box.dart';
 import '../model/department.dart';
 

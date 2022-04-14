@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
+import '../../extensions/context_extension.dart';
 
 class CustomRatingBar extends StatelessWidget {
   const CustomRatingBar(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/widgets/icon_button/back_arrow.dart';
 
 class BackArrowAppBar extends StatelessWidget {
   const BackArrowAppBar({Key? key, this.imageUrl, this.centerText})
@@ -14,21 +15,11 @@ class BackArrowAppBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _backArrawIcon(context),
+        BackArrowButton(context),
         centerText != null ? _centerText(context) : const SizedBox(),
         imageUrl != null ? _shoppingIcon(context) : _emptyContainer(context)
       ],
     );
-  }
-
-  IconButton _backArrawIcon(BuildContext context) {
-    return IconButton(
-        constraints: const BoxConstraints(),
-        padding: EdgeInsets.zero,
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        icon: const Icon(Icons.arrow_back));
   }
 
   Text _centerText(BuildContext context) {
