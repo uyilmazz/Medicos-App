@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-import 'package:medicos_app/core/widgets/rating_bar/rating_bar.dart';
-import 'package:medicos_app/view/pharmacy/view/product_detail.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../../core/widgets/rating_bar/rating_bar.dart';
+import '../../../view/pharmacy/view/product_detail.dart';
 import '../../../view/pharmacy/model/product.dart';
 
 class ProductItem extends StatelessWidget {

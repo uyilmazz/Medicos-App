@@ -12,5 +12,9 @@
     "availableDoctors": "Available Doctors",
     "categories": "Categories",
     "products": "Products",
-    "productDetail": "Product Detail"
+    "productDetail": "Product Detail",
+    "description": "Description",
+    "howToUse": "How To Use",
+    "addToCart": "Add to cart",
+    "doctorList": "List of all {} specialist"
 }

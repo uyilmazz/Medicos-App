@@ -56,6 +56,22 @@ mixin _$PharmacyViewModel on _PharmacyViewModelBase, Store {
     });
   }
 
+  final _$pageBuilderIndexAtom =
+      Atom(name: '_PharmacyViewModelBase.pageBuilderIndex');
+
+  @override
+  int get pageBuilderIndex {
+    _$pageBuilderIndexAtom.reportRead();
+    return super.pageBuilderIndex;
+  }
+
+  @override
+  set pageBuilderIndex(int value) {
+    _$pageBuilderIndexAtom.reportWrite(value, super.pageBuilderIndex, () {
+      super.pageBuilderIndex = value;
+    });
+  }
+
   final _$_PharmacyViewModelBaseActionController =
       ActionController(name: '_PharmacyViewModelBase');
 
@@ -71,11 +87,23 @@ mixin _$PharmacyViewModel on _PharmacyViewModelBase, Store {
   }
 
   @override
+  void changePageBuilderIndex(dynamic index) {
+    final _$actionInfo = _$_PharmacyViewModelBaseActionController.startAction(
+        name: '_PharmacyViewModelBase.changePageBuilderIndex');
+    try {
+      return super.changePageBuilderIndex(index);
+    } finally {
+      _$_PharmacyViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 fakePharmacyList: ${fakePharmacyList},
 selectedItemIndex: ${selectedItemIndex},
-products: ${products}
+products: ${products},
+pageBuilderIndex: ${pageBuilderIndex}
     ''';
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:medicos_app/core/base/view_model/base_view_model.dart';
+import '../../../core/base/view_model/base_view_model.dart';
 import 'package:mobx/mobx.dart';
-
 import '../model/pharmacy.dart';
 import '../model/product.dart';
 part 'pharmacy_view_model.g.dart';
@@ -20,6 +19,9 @@ abstract class _PharmacyViewModelBase with Store, BaseViewModel {
   @observable
   List<Product>? products;
 
+  @observable
+  int pageBuilderIndex = 0;
+
   @override
   void setContext(BuildContext context) {
     context = context;
@@ -34,5 +36,10 @@ abstract class _PharmacyViewModelBase with Store, BaseViewModel {
   @action
   void changeTabBarItem(int index) {
     selectedItemIndex = index;
+  }
+
+  @action
+  void changePageBuilderIndex(index) {
+    pageBuilderIndex = index;
   }
 }

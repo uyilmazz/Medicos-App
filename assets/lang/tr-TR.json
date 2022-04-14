@@ -12,5 +12,9 @@
     "availableDoctors": "Müsait Doktorlar",
     "categories": "Kategoriler",
     "products": "Ürünler",
-    "productDetail": "Ürün Detay"
+    "productDetail": "Ürün Detay",
+    "description": "Tanım",
+    "howToUse": "Nasıl Kullanılır",
+    "addToCart": "Sepete ekle",
+    "doctorList": "Tüm {} uzmanlarının listesi"
 }

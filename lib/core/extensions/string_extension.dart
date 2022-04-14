@@ -7,4 +7,5 @@ extension StringExtension on String {
   String get toIconPng => 'assets/icons/$this.png';
 
   String get locale => this.tr();
+  String paramLocale(List<String> args) => this.tr(args: args);
 }

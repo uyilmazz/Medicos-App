@@ -1,10 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:medicos_app/view/doctor/view/doctor_view.dart';
 import 'core/constants/app_constant.dart';
 import 'core/init/language/language_manager.dart';
 import 'core/init/theme/app_theme.dart';
-import 'view/home/view/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       title: 'Material App',
-      home: const HomePage(),
+      home: const DoctorView(),
     );
   }
 }
