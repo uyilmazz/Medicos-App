@@ -4,15 +4,21 @@ import '../../extensions/context_extension.dart';
 
 class CustomRatingBar extends StatelessWidget {
   const CustomRatingBar(
-      {Key? key, this.itemSize, this.initializeRating, this.onRatingUpdate})
+      {Key? key,
+      this.itemSize,
+      this.initializeRating,
+      this.onRatingUpdate,
+      this.itemPadding})
       : super(key: key);
   final double? itemSize;
   final double? initializeRating;
   final Function()? onRatingUpdate;
+  final EdgeInsetsGeometry? itemPadding;
 
   @override
   Widget build(BuildContext context) {
     return RatingBar.builder(
+      itemPadding: itemPadding ?? EdgeInsets.zero,
       initialRating: initializeRating ?? 0,
       minRating: 1,
       direction: Axis.horizontal,

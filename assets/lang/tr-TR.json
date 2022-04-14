@@ -16,5 +16,12 @@
     "description": "Tanım",
     "howToUse": "Nasıl Kullanılır",
     "addToCart": "Sepete ekle",
-    "doctorList": "Tüm {} uzmanlarının listesi"
+    "doctorList": "Tüm {} uzmanlarının listesi",
+    "experience": "Tecrübe",
+    "years": "yıl",
+    "specialist": "Uzmanı",
+    "getAppointment": "Randevu Al",
+    "patient": "Hasta",
+    "ratings": "Derecelendirme",
+    "star": "{} yıldız"
 }

@@ -10,7 +10,7 @@ Doctor _$DoctorFromJson(Map<String, dynamic> json) => Doctor(
       name: json['name'] as String?,
       profileUrl: json['profileUrl'] as String?,
       specialist: json['specialist'] as String?,
-      experience: (json['experience'] as num?)?.toDouble(),
+      experience: json['experience'] as int?,
       rate: (json['rate'] as num?)?.toDouble(),
     );
 

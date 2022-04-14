@@ -18,5 +18,12 @@ abstract class  LocaleKeys {
   static const howToUse = 'howToUse';
   static const addToCart = 'addToCart';
   static const doctorList = 'doctorList';
+  static const experience = 'experience';
+  static const years = 'years';
+  static const specialist = 'specialist';
+  static const getAppointment = 'getAppointment';
+  static const patient = 'patient';
+  static const ratings = 'ratings';
+  static const star = 'star';
 
 }

@@ -16,5 +16,12 @@
     "description": "Description",
     "howToUse": "How To Use",
     "addToCart": "Add to cart",
-    "doctorList": "List of all {} specialist"
+    "doctorList": "List of all {} specialist",
+    "experience": "Experience",
+    "years": "years",
+    "specialist": "Specialist",
+    "getAppointment": "Get Appointment",
+    "patient": "Patient",
+    "ratings": "Ratings",
+    "star": "{} star"
 }
