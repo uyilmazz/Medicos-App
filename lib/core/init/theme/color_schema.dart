@@ -17,8 +17,10 @@ class CustomColorSchema {
       onSecondary: Color(0xFFFFFFFF), // +
       error: Color(0xFFFA0A0A),
       onError: Color(0xFFA7979B), // +
-      background: Color(0xFF73696C),
+      background: Color(0xFF73696C), // +
       onBackground: Color(0xFF828282), // +
+      tertiary: Color(0xFFDD505A),
+      onTertiary: Color(0xFF00FF00),
       surface: Colors.black12, // +
       onSurface: Colors.black); // +
 }

@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../../product/widgets/row/head_text_see_all.dart';
-import '../../../product/widgets/row/home_app.dart';
-import '../../department/view/department_view.dart';
-import '../../pharmacy/view/pharmacy_view.dart';
-import '../../../product/widgets/container/available_doctor_item.dart';
-import '../../../product/widgets/container/home_page_item.dart';
+import '../../doctor/view_model/doctor_view_model.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
+import '../../../product/widgets/container/available_doctor_item.dart';
+import '../../../product/widgets/container/home_page_item.dart';
+import '../../../product/widgets/row/head_text_see_all.dart';
+import '../../../product/widgets/row/home_app.dart';
 import '../../../product/widgets/stack/search_box.dart';
+import '../../department/view/department_view.dart';
+import '../../pharmacy/view/pharmacy_view.dart';
 import '../view_model/home_view_model.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+
+  final DoctorViewModel _doctorViewModel = DoctorViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +25,7 @@ class HomePage extends StatelessWidget {
       viewModel: HomeViewModel(),
       onModelReady: (model) {
         model.setContext(context);
+        _doctorViewModel.init();
         model.init();
       },
       onPageBuilder: (context, homeViewModel) => Scaffold(
@@ -109,7 +113,7 @@ class HomePage extends StatelessWidget {
             const HeadAndSeeAllText(headText: LocaleKeys.availableDoctors),
             SizedBox(height: context.normalValue),
             _scroolDoctorItem(
-                context, homeViewModel, homeViewModel.fakeDepartment),
+                context, homeViewModel, _doctorViewModel.fakeDoctorList),
             SizedBox(height: context.normalValue),
           ],
         ),
@@ -129,15 +133,17 @@ class HomePage extends StatelessWidget {
                     .toList()),
       );
 
-  Widget _scroolDoctorItem(
-          BuildContext context, HomeViewModel homeViewModel, List? items) =>
+  Widget _scroolDoctorItem(BuildContext context, HomeViewModel homeViewModel,
+          List? availableDoctorList) =>
       SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Wrap(
             alignment: WrapAlignment.start,
             spacing: context.lowValue,
-            children: items == null
+            children: availableDoctorList == null
                 ? [const SizedBox()]
-                : items.map((department) => AvailabeDoctorItem()).toList()),
+                : availableDoctorList
+                    .map((doctor) => AvailabeDoctorItem(doctor: doctor))
+                    .toList()),
       );
 }

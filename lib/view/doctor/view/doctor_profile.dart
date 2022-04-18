@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-import 'package:medicos_app/core/init/language/locale_keys.g.dart';
-import 'package:medicos_app/core/widgets/rating_bar/rating_bar.dart';
-import 'package:medicos_app/product/widgets/button/custom_fab_button.dart';
-import 'package:medicos_app/product/widgets/container/icon_container.dart';
-import 'package:medicos_app/product/widgets/row/back_arrow_app_bar.dart';
-import 'package:medicos_app/product/widgets/row/head_text_see_all.dart';
-
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../../core/init/language/locale_keys.g.dart';
+import '../../../core/widgets/rating_bar/rating_bar.dart';
+import '../../../product/widgets/button/custom_fab_button.dart';
+import '../../../product/widgets/row/back_arrow_app_bar.dart';
 import '../model/doctor.dart';
 
 class DoctorProfile extends StatelessWidget {
@@ -63,9 +60,8 @@ class DoctorProfile extends StatelessWidget {
                   fontWeight: FontWeight.w600)),
           SizedBox(height: context.lowValue),
           Text(
-              doctor.specialist != null
-                  ? '${doctor.specialist} ${LocaleKeys.specialist}'
-                  : '',
+              LocaleKeys.specialist
+                  .paramLocale([(doctor.specialist ?? '').toString()]),
               style: context.textTheme.headline6!
                   .copyWith(fontWeight: FontWeight.w600)),
           SizedBox(height: context.lowValue),

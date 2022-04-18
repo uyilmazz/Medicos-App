@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../core/constants/app_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 import '../../../core/widgets/icon_button/back_arrow.dart';
+import '../../../view/user/view_model/user_view_model.dart';
 import '../textField/search_text_field.dart';
 
 class SearchBox extends StatelessWidget {
@@ -74,7 +76,7 @@ class SearchBox extends StatelessWidget {
         children: [
           isBack
               ? BackArrowButton(context)
-              : Text('Dev user',
+              : Text(context.watch<UserViewModel>().fakeUser.name ?? '',
                   style: context.textTheme.subtitle1!
                       .copyWith(fontSize: 18, fontWeight: FontWeight.w500)),
           Container(

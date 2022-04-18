@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/product/widgets/container/icon_container.dart';
+import '../container/icon_container.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/widgets/icon_button/back_arrow.dart';
 
 class BackArrowAppBar extends StatelessWidget {
-  const BackArrowAppBar({Key? key, this.imageUrl, this.centerText})
+  const BackArrowAppBar(
+      {Key? key, this.imageUrl, this.centerText, this.iconOnTap})
       : super(key: key);
 
   final String? imageUrl;
   final String? centerText;
+  final void Function()? iconOnTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class BackArrowAppBar extends StatelessWidget {
         BackArrowButton(context),
         centerText != null ? _centerText(context) : const SizedBox(),
         imageUrl != null
-            ? IconContainer(iconName: imageUrl!)
+            ? IconContainer(iconName: imageUrl!, onTap: iconOnTap)
             : _emptyContainer(context)
       ],
     );
@@ -27,7 +29,7 @@ class BackArrowAppBar extends StatelessWidget {
 
   Text _centerText(BuildContext context) {
     return Text(centerText!,
-        style: context.textTheme.headline6!.copyWith(
+        style: context.textTheme.headline5!.copyWith(
             fontWeight: FontWeight.bold,
             color: context.theme.colorScheme.primary));
   }

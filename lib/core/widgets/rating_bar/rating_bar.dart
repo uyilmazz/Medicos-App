@@ -31,6 +31,5 @@ class CustomRatingBar extends StatelessWidget {
         onRatingUpdate;
       },
     );
-    ;
   }
 }

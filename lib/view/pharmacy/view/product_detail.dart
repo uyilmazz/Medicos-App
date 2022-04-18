@@ -116,7 +116,9 @@ class ProductDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: context.lowValue),
-          HeadAndSeeAllText(headText: product.name ?? '', isSeeAll: false),
+          Text(product.name ?? '',
+              style: context.textTheme.headline6!
+                  .copyWith(fontWeight: FontWeight.w500)),
           Text('\$ ${(product.price ?? 0).toStringAsFixed(2)}',
               style: context.textTheme.subtitle1!.copyWith(
                   fontSize: 18,
@@ -125,14 +127,14 @@ class ProductDetail extends StatelessWidget {
           SizedBox(height: context.normalValue),
           CustomRatingBar(initializeRating: product.rate ?? 0),
           SizedBox(height: context.normalValue),
-          HeadAndSeeAllText(
-              headText: LocaleKeys.description.locale, isSeeAll: false),
+          const HeadAndSeeAllText(
+              headText: LocaleKeys.description, isSeeAll: false),
           Text((product.description ?? ''),
               style: context.textTheme.bodySmall!
                   .copyWith(fontWeight: FontWeight.w500, fontSize: 12)),
           SizedBox(height: context.normalValue),
-          HeadAndSeeAllText(
-              headText: LocaleKeys.howToUse.locale, isSeeAll: false),
+          const HeadAndSeeAllText(
+              headText: LocaleKeys.howToUse, isSeeAll: false),
           Text((product.usage ?? ''),
               style: context.textTheme.bodySmall!
                   .copyWith(fontWeight: FontWeight.w500, fontSize: 12)),

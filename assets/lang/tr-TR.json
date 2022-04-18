@@ -18,10 +18,48 @@
     "addToCart": "Sepete ekle",
     "doctorList": "Tüm {} uzmanlarının listesi",
     "experience": "Tecrübe",
-    "years": "yıl",
-    "specialist": "Uzmanı",
+    "years": "{} yıl",
+    "specialist": "{} Uzmanı",
     "getAppointment": "Randevu Al",
     "patient": "Hasta",
     "ratings": "Derecelendirme",
-    "star": "{} yıldız"
+    "star": "{} yıldız",
+    "cart": {
+        "shoppingCart": "Alışveriş Sepeti",
+        "order": "Sipariş",
+        "delivery": "Teslimat",
+        "tax": "Vergi",
+        "discount": "İndirim",
+        "totalBill": "Toplam Fatura",
+        "shippingDetails": "Nakliye Detayları",
+        "checkOut": "Tamamla"
+    },
+    "submit": "Teslim et",
+    "order": {
+        "great": "Mükemmel!",
+        "orderPlacedSucces": "Sipariş başarıyla verildi",
+        "orderCode": "Sipariş Kodu",
+        "deliveryTime": "Teslimat Süresi",
+        "amountToBePaid": "Ödenecek tutar",
+        "confirmEmailSent": "Doğrulama e-postası şu adrese gönderildi",
+        "shippingAddress": "Gönderim adresi",
+        "startNewOrder": "Yeni sipariş başlat"
+    },
+    "profile": {
+        "profile": "Profil",
+        "name": "Ad",
+        "email": "Email",
+        "phoneNumber": "Telefon Numarası",
+        "address": "Adres",
+        "zipCode": "Posta Kodu",
+        "editProfile": "Profili Düzenle",
+        "changePassword": "Password Değiştir",
+        "nameValidate": "İsim 10 karakterden az olamaz!",
+        "emailValidate": "E-posta doğru formatta değil!",
+        "phoneNumberValidate": "Telefon numarası 10 haneli olmalıdır!",
+        "done": "Tamamla",
+        "oldPassword": "Eski Şifre",
+        "newPassword": "Yeni Şifre",
+        "confirmPassword": "Şifre Onayla"
+    }
 }
