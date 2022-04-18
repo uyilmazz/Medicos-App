@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
 
 class GradientButton extends StatelessWidget {
   const GradientButton({Key? key, required this.buttonText}) : super(key: key);

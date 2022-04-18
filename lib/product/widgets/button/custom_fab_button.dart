@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
+import '../../../core/extensions/context_extension.dart';
 
 class CustomFabButton extends StatelessWidget {
   const CustomFabButton({Key? key, required this.text, this.onTap})
@@ -13,15 +13,15 @@ class CustomFabButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+          width: context.width * 0.6,
           margin: EdgeInsets.only(bottom: context.lowValue),
           padding: EdgeInsets.symmetric(
               horizontal: context.width * 0.1,
-              vertical: context.lowValue * 1.4),
+              vertical: context.lowValue * 1.3),
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
                     offset: Offset(0, context.normalValue),
-                    // spreadRadius: 1,
                     blurRadius: 56,
                     color: context.theme.colorScheme.primary.withOpacity(0.35))
               ],
@@ -34,8 +34,9 @@ class CustomFabButton extends StatelessWidget {
                   ]),
               borderRadius: BorderRadius.circular(context.lowValue * 1.7)),
           child: Text(text,
-              style: context.textTheme.headline6!.copyWith(
-                  fontSize: 20,
+              textAlign: TextAlign.center,
+              style: context.textTheme.headline2!.copyWith(
+                  fontSize: 18,
                   color: context.theme.colorScheme.onSecondary,
                   fontWeight: FontWeight.w700))),
     );

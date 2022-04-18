@@ -18,10 +18,48 @@
     "addToCart": "Add to cart",
     "doctorList": "List of all {} specialist",
     "experience": "Experience",
-    "years": "years",
-    "specialist": "Specialist",
+    "years": "{} years",
+    "specialist": "{} Specialist",
     "getAppointment": "Get Appointment",
     "patient": "Patient",
     "ratings": "Ratings",
-    "star": "{} star"
+    "star": "{} star",
+    "cart": {
+        "shoppingCart": "Shopping Cart",
+        "order": "Order",
+        "delivery": "Delivery",
+        "tax": "Tax",
+        "discount": "Discount",
+        "totalBill": "Total Bill",
+        "shippingDetails": "Shipping Details",
+        "checkOut": "Check Out"
+    },
+    "submit": "Submit",
+    "order": {
+        "great": "Great!",
+        "orderPlacedSucces": "Order Placed Successfully",
+        "orderCode": "Order Code",
+        "deliveryTime": "Delivery Time",
+        "amountToBePaid": "Amount to be paid",
+        "confirmEmailSent": "Confirmation email have been sent at",
+        "shippingAddress": "Shipping Address",
+        "startNewOrder": "Start a new order"
+    },
+    "profile": {
+        "profile": "Profile",
+        "name": "Name",
+        "email": "Email",
+        "phoneNumber": "Phone Number",
+        "address": "Address",
+        "zipCode": "Zip Code",
+        "editProfile": "Edit Profile",
+        "changePassword": "Change Password",
+        "nameValidate": "name cannot be less than 3 characters!",
+        "emailValidate": "Email is not in the correct format!",
+        "phoneNumberValidate": "Phone Number must be 10 digits!",
+        "done": "Done",
+        "oldPassword": "Old Password",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm Password"
+    }
 }

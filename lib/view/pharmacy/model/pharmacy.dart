@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 import '../../home/model/medicine_model.dart';
-
 part 'pharmacy.g.dart';
 
 @JsonSerializable()

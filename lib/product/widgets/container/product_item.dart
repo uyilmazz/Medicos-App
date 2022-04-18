@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/widgets/rating_bar/rating_bar.dart';
-import '../../../view/pharmacy/view/product_detail.dart';
 import '../../../view/pharmacy/model/product.dart';
+import '../../../view/pharmacy/view/product_detail.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({Key? key, required this.item}) : super(key: key);

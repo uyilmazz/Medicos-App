@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
+import '../container/icon_container.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({Key? key, required this.imageUrl, this.isShop = false})
@@ -19,23 +20,10 @@ class HomeAppBar extends StatelessWidget {
             style: context.textTheme.headline5!.copyWith(
                 fontWeight: FontWeight.w600,
                 color: context.theme.colorScheme.primary)),
-        isShop ? _shoppingIcon(context) : _profileAvatar(context)
+        isShop
+            ? IconContainer(iconName: 'shopping'.toIconPng)
+            : _profileAvatar(context)
       ],
-    );
-  }
-
-  Container _shoppingIcon(BuildContext context) {
-    return Container(
-      height: context.height * 0.05,
-      width: context.width * 0.1,
-      padding: const EdgeInsets.all(9.0),
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: LinearGradient(colors: [
-            context.theme.colorScheme.primary,
-            context.theme.colorScheme.primary.withOpacity(0.6)
-          ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-      child: Image.asset('shopping'.toIconPng, fit: BoxFit.fill),
     );
   }
 

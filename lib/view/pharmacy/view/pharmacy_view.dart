@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import '../../user/view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -32,7 +34,7 @@ class PharmacyView extends StatelessWidget {
                       children: [
                         HomeAppBar(
                             imageUrl: 'profile'.toImagePng, isShop: true),
-                        Text('Dev user',
+                        Text(context.watch<UserViewModel>().fakeUser.name ?? '',
                             style: context.textTheme.subtitle1!.copyWith(
                                 fontSize: 18, fontWeight: FontWeight.w500)),
                         SizedBox(height: context.normalValue * 1.5),

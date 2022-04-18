@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/base/view/base_widget.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-import 'package:medicos_app/core/init/language/locale_keys.g.dart';
-import 'package:medicos_app/core/widgets/rating_bar/rating_bar.dart';
-import 'package:medicos_app/product/widgets/stack/search_box.dart';
-import 'package:medicos_app/view/doctor/view/doctor_profile.dart';
-import 'package:medicos_app/view/doctor/view_model/doctor_view_model.dart';
-
-import '../../../product/widgets/text/flexible_text.dart';
+import '../../../core/base/view/base_widget.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../../core/init/language/locale_keys.g.dart';
+import '../../../core/widgets/rating_bar/rating_bar.dart';
+import '../../../product/widgets/stack/search_box.dart';
+import 'doctor_profile.dart';
+import '../view_model/doctor_view_model.dart';
 import '../model/doctor.dart';
 
 class DoctorView extends StatelessWidget {
@@ -119,17 +117,14 @@ class DoctorView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Flexible(
-            child: Text('${item.specialist} ${LocaleKeys.specialist.locale}',
-                overflow: TextOverflow.ellipsis,
-                style: context.textTheme.subtitle2!.copyWith(
-                    letterSpacing: -0.2,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500)),
-          ),
-          // FlexibleText(
-          //     '${item.specialist} ${LocaleKeys.specialist.locale} ssssssssssssssss',
-          //     context),
-          // const Spacer(),
+              child: Text(
+                  LocaleKeys.specialist
+                      .paramLocale([(item.specialist ?? '').toString()]),
+                  overflow: TextOverflow.ellipsis,
+                  style: context.textTheme.subtitle2!.copyWith(
+                      letterSpacing: -0.2,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500))),
           CustomRatingBar(
               initializeRating: item.rate,
               itemPadding: EdgeInsets.only(left: context.lowValue * 0.8))

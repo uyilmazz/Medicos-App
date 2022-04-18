@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:medicos_app/core/base/view_model/base_view_model.dart';
 import 'package:mobx/mobx.dart';
-
+import '../../../core/base/view_model/base_view_model.dart';
 import '../model/doctor.dart';
+
 part 'doctor_view_model.g.dart';
 
 class DoctorViewModel = _DoctorViewModelBase with _$DoctorViewModel;
