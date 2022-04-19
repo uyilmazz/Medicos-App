@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicos_app/product/widgets/text/experience_rich_text.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -92,7 +93,7 @@ class DoctorView extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _experienceRichText(context, item),
+            ExperienceRichText(experienceValue: item.experience.toString()),
             _availableClocksWrap(context)
           ],
         )
@@ -131,21 +132,6 @@ class DoctorView extends StatelessWidget {
         ],
       )
     ]);
-  }
-
-  RichText _experienceRichText(BuildContext context, Doctor item) {
-    return RichText(
-        text: TextSpan(
-            text: LocaleKeys.experience.locale,
-            style: context.textTheme.subtitle1!
-                .copyWith(fontSize: 15, fontWeight: FontWeight.w700),
-            children: [
-          WidgetSpan(child: SizedBox(width: context.lowValue)),
-          TextSpan(
-              text: '${item.experience} ${LocaleKeys.years.locale}',
-              style: context.textTheme.subtitle2!
-                  .copyWith(fontWeight: FontWeight.w500))
-        ]));
   }
 
   Wrap _availableClocksWrap(BuildContext context) {
