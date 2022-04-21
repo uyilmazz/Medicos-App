@@ -13,7 +13,7 @@ class CustomFabButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-          width: context.width * 0.6,
+          width: context.width * 0.65,
           margin: EdgeInsets.only(bottom: context.lowValue),
           padding: EdgeInsets.symmetric(
               horizontal: context.width * 0.1,

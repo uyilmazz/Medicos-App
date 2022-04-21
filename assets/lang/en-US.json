@@ -61,5 +61,21 @@
         "oldPassword": "Old Password",
         "newPassword": "New Password",
         "confirmPassword": "Confirm Password"
+    },
+    "doctorAppointment": {
+        "appointment": "Appointment",
+        "schedule": "Schedule",
+        "availableTimings": "Available Timings",
+        "morningSlots": "Morning Slots",
+        "afternoonSlots": "Afternoon Slots",
+        "eveningSlots": "Evening Slots",
+        "bookAppointment": "Book Appointment",
+        "confirm": "Confirm"
+    },
+    "userAppointment": {
+        "myAppointments": "My Appointments",
+        "upcoming": "Upcoming",
+        "past": "Past",
+        "cancel": "Cancel"
     }
 }

@@ -61,5 +61,21 @@
         "oldPassword": "Eski Şifre",
         "newPassword": "Yeni Şifre",
         "confirmPassword": "Şifre Onayla"
+    },
+    "doctorAppointment": {
+        "appointment": "Randevu",
+        "schedule": "Program",
+        "availableTimings": "Mevcut Zamanlar",
+        "morningSlots": "Sabah Aralığı",
+        "afternoonSlots": "Öğleden Sonra Aralığı",
+        "eveningSlots": "Akşam Aralığı",
+        "bookAppointment": "Randvu Al",
+        "confirm": "Onayla"
+    },
+    "userAppointment": {
+        "myAppointments": "Randevularım",
+        "upcoming": "Yaklaşan",
+        "past": "Geçmiş",
+        "cancel": "İptal Et"
     }
 }

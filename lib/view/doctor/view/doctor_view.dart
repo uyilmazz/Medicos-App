@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../product/widgets/text/experience_rich_text.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -92,7 +93,7 @@ class DoctorView extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _experienceRichText(context, item),
+            ExperienceRichText(experienceValue: item.experience.toString()),
             _availableClocksWrap(context)
           ],
         )
@@ -111,7 +112,7 @@ class DoctorView extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(item.name ?? _notFound,
           overflow: TextOverflow.ellipsis,
-          style: context.textTheme.headline6!
+          style: context.textTheme.subtitle1!
               .copyWith(fontWeight: FontWeight.w600)),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,7 +124,7 @@ class DoctorView extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: context.textTheme.subtitle2!.copyWith(
                       letterSpacing: -0.2,
-                      fontSize: 15,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500))),
           CustomRatingBar(
               initializeRating: item.rate,
@@ -131,21 +132,6 @@ class DoctorView extends StatelessWidget {
         ],
       )
     ]);
-  }
-
-  RichText _experienceRichText(BuildContext context, Doctor item) {
-    return RichText(
-        text: TextSpan(
-            text: LocaleKeys.experience.locale,
-            style: context.textTheme.subtitle1!
-                .copyWith(fontSize: 15, fontWeight: FontWeight.w700),
-            children: [
-          WidgetSpan(child: SizedBox(width: context.lowValue)),
-          TextSpan(
-              text: '${item.experience} ${LocaleKeys.years.locale}',
-              style: context.textTheme.subtitle2!
-                  .copyWith(fontWeight: FontWeight.w500))
-        ]));
   }
 
   Wrap _availableClocksWrap(BuildContext context) {

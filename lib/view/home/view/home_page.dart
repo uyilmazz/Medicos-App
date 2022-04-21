@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
                     showUnselectedLabels: false,
                     selectedFontSize: 0,
                     onTap: (index) {
-                      homeViewModel.changeBottomNavigationIten(index);
+                      homeViewModel.changeBottomNavigationItem(index);
                     },
                     currentIndex: homeViewModel.bottomNavigationBarIndex,
                     items: [

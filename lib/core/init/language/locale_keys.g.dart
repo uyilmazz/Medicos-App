@@ -62,4 +62,24 @@ abstract class LocaleKeys {
   static const profile_newPassword = 'profile.newPassword';
   static const profile_confirmPassword = 'profile.confirmPassword';
   static const profile = 'profile';
+  static const doctorAppointment_appointment = 'doctorAppointment.appointment';
+  static const doctorAppointment_schedule = 'doctorAppointment.schedule';
+  static const doctorAppointment_availableTimings =
+      'doctorAppointment.availableTimings';
+  static const doctorAppointment_morningSlots =
+      'doctorAppointment.morningSlots';
+  static const doctorAppointment_afternoonSlots =
+      'doctorAppointment.afternoonSlots';
+  static const doctorAppointment_eveningSlots =
+      'doctorAppointment.eveningSlots';
+  static const doctorAppointment_bookAppointment =
+      'doctorAppointment.bookAppointment';
+  static const doctorAppointment_confirm = 'doctorAppointment.confirm';
+  static const doctorAppointment = 'doctorAppointment';
+  static const userAppointment_myAppointments =
+      'userAppointment.myAppointments';
+  static const userAppointment_upcoming = 'userAppointment.upcoming';
+  static const userAppointment_past = 'userAppointment.past';
+  static const userAppointment_cancel = 'userAppointment.cancel';
+  static const userAppointment = 'userAppointment';
 }
