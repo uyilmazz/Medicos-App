@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
+import '../../../core/extensions/context_extension.dart';
 
 class ScheduleDayContainer extends StatelessWidget {
   const ScheduleDayContainer(

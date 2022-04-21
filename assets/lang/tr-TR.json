@@ -71,5 +71,11 @@
         "eveningSlots": "Akşam Aralığı",
         "bookAppointment": "Randvu Al",
         "confirm": "Onayla"
+    },
+    "userAppointment": {
+        "myAppointments": "Randevularım",
+        "upcoming": "Yaklaşan",
+        "past": "Geçmiş",
+        "cancel": "İptal Et"
     }
 }

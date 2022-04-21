@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../extensions/context_extension.dart';
 
 class AnimatedCarousel extends StatelessWidget {

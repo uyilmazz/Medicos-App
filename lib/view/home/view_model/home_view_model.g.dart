@@ -72,15 +72,41 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
+  final _$isOpenSettingAtom = Atom(name: '_HomeViewModelBase.isOpenSetting');
+
+  @override
+  bool get isOpenSetting {
+    _$isOpenSettingAtom.reportRead();
+    return super.isOpenSetting;
+  }
+
+  @override
+  set isOpenSetting(bool value) {
+    _$isOpenSettingAtom.reportWrite(value, super.isOpenSetting, () {
+      super.isOpenSetting = value;
+    });
+  }
+
   final _$_HomeViewModelBaseActionController =
       ActionController(name: '_HomeViewModelBase');
 
   @override
-  void changeBottomNavigationIten(int index) {
+  void changeOpenSettingState(bool value) {
     final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
-        name: '_HomeViewModelBase.changeBottomNavigationIten');
+        name: '_HomeViewModelBase.changeOpenSettingState');
     try {
-      return super.changeBottomNavigationIten(index);
+      return super.changeOpenSettingState(value);
+    } finally {
+      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeBottomNavigationItem(int index) {
+    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
+        name: '_HomeViewModelBase.changeBottomNavigationItem');
+    try {
+      return super.changeBottomNavigationItem(index);
     } finally {
       _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -92,7 +118,8 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
 fakeDepartment: ${fakeDepartment},
 bottomNavigationBarIndex: ${bottomNavigationBarIndex},
 fakePharmacy: ${fakePharmacy},
-getAllDepartments: ${getAllDepartments}
+getAllDepartments: ${getAllDepartments},
+isOpenSetting: ${isOpenSetting}
     ''';
   }
 }

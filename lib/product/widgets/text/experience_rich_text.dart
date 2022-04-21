@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 
 class ExperienceRichText extends StatelessWidget {
@@ -15,8 +14,8 @@ class ExperienceRichText extends StatelessWidget {
     return RichText(
         text: TextSpan(
             text: LocaleKeys.experience.locale,
-            style: context.textTheme.subtitle1!
-                .copyWith(fontSize: 15, fontWeight: FontWeight.w700),
+            style: context.textTheme.subtitle2!
+                .copyWith(fontWeight: FontWeight.w600),
             children: [
           WidgetSpan(child: SizedBox(width: context.lowValue)),
           TextSpan(

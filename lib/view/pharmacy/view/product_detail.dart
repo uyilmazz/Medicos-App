@@ -9,8 +9,8 @@ import '../../../core/widgets/rating_bar/rating_bar.dart';
 import '../../../product/widgets/button/custom_fab_button.dart';
 import '../../../product/widgets/row/back_arrow_app_bar.dart';
 import '../../../product/widgets/row/head_text_see_all.dart';
-import '../view_model/pharmacy_view_model.dart';
 import '../model/product.dart';
+import '../view_model/pharmacy_view_model.dart';
 
 class ProductDetail extends StatelessWidget {
   ProductDetail({Key? key, required this.product}) : super(key: key);

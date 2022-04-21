@@ -4,9 +4,9 @@ import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 import '../../../core/widgets/text_form_field/custom_text_form_field.dart';
 import '../../../product/widgets/button/custom_fab_button.dart';
+import '../../../product/widgets/container/icon_container.dart';
 import '../../../product/widgets/row/back_arrow_app_bar.dart';
 import '../../../product/widgets/textField/user_text_form_field.dart';
-import '../../../product/widgets/container/icon_container.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);

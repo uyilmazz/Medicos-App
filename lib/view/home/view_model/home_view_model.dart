@@ -25,6 +25,14 @@ abstract class _HomeViewModelBase extends BaseViewModel with Store {
   @observable
   List<Department>? getAllDepartments;
 
+  @observable
+  bool isOpenSetting = false;
+
+  @action
+  void changeOpenSettingState(bool value) {
+    isOpenSetting = value;
+  }
+
   @override
   void setContext(BuildContext context) {
     this.context = context;
@@ -38,7 +46,7 @@ abstract class _HomeViewModelBase extends BaseViewModel with Store {
   }
 
   @action
-  void changeBottomNavigationIten(int index) {
+  void changeBottomNavigationItem(int index) {
     bottomNavigationBarIndex = index;
   }
 }

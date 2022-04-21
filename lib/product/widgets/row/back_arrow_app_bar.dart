@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../container/icon_container.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/widgets/icon_button/back_arrow.dart';
+import '../container/icon_container.dart';
 
 class BackArrowAppBar extends StatelessWidget {
   const BackArrowAppBar(

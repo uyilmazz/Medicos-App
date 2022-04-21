@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-import 'package:medicos_app/core/init/language/locale_keys.g.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../../core/init/language/locale_keys.g.dart';
 import '../../../view/doctor/model/doctor.dart';
 
 class AppointmentConfirmDialog extends StatelessWidget {
@@ -75,37 +75,6 @@ class AppointmentConfirmDialog extends StatelessWidget {
     );
   }
 
-  GestureDetector _confirmButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-          padding: EdgeInsets.symmetric(
-              horizontal: context.width * 0.12,
-              vertical: context.lowValue * 1.3),
-          decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    offset: Offset(0, context.normalValue),
-                    blurRadius: 56,
-                    color: context.theme.colorScheme.primary.withOpacity(0.35))
-              ],
-              gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [
-                    context.theme.colorScheme.primary,
-                    context.theme.colorScheme.primary.withOpacity(0.3)
-                  ]),
-              borderRadius: BorderRadius.circular(context.lowValue * 1.7)),
-          child: Text(LocaleKeys.doctorAppointment_confirm.locale,
-              textAlign: TextAlign.center,
-              style: context.textTheme.headline2!.copyWith(
-                  fontSize: 18,
-                  color: context.theme.colorScheme.onSecondary,
-                  fontWeight: FontWeight.w700))),
-    );
-  }
-
   Widget _confirmItem(BuildContext context, String textOne, String textTwo,
           IconData icon) =>
       Container(
@@ -160,6 +129,37 @@ class AppointmentConfirmDialog extends StatelessWidget {
         top: 2,
         left: context.normalValue * 1.1,
         child: Icon(icon, size: context.normalValue * 1.6));
+  }
+
+  GestureDetector _confirmButton(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+          padding: EdgeInsets.symmetric(
+              horizontal: context.width * 0.12,
+              vertical: context.lowValue * 1.3),
+          decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                    offset: Offset(0, context.normalValue),
+                    blurRadius: 56,
+                    color: context.theme.colorScheme.primary.withOpacity(0.35))
+              ],
+              gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    context.theme.colorScheme.primary,
+                    context.theme.colorScheme.primary.withOpacity(0.3)
+                  ]),
+              borderRadius: BorderRadius.circular(context.lowValue * 1.7)),
+          child: Text(LocaleKeys.doctorAppointment_confirm.locale,
+              textAlign: TextAlign.center,
+              style: context.textTheme.headline2!.copyWith(
+                  fontSize: 18,
+                  color: context.theme.colorScheme.onSecondary,
+                  fontWeight: FontWeight.w700))),
+    );
   }
 
   Positioned _dialogCircleAvatar(BuildContext context) {

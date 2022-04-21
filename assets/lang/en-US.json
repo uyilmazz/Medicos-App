@@ -71,5 +71,11 @@
         "eveningSlots": "Evening Slots",
         "bookAppointment": "Book Appointment",
         "confirm": "Confirm"
+    },
+    "userAppointment": {
+        "myAppointments": "My Appointments",
+        "upcoming": "Upcoming",
+        "past": "Past",
+        "cancel": "Cancel"
     }
 }

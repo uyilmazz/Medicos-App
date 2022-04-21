@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/product/widgets/text/experience_rich_text.dart';
+import '../../../product/widgets/text/experience_rich_text.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -112,7 +112,7 @@ class DoctorView extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(item.name ?? _notFound,
           overflow: TextOverflow.ellipsis,
-          style: context.textTheme.headline6!
+          style: context.textTheme.subtitle1!
               .copyWith(fontWeight: FontWeight.w600)),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,7 +124,7 @@ class DoctorView extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: context.textTheme.subtitle2!.copyWith(
                       letterSpacing: -0.2,
-                      fontSize: 15,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500))),
           CustomRatingBar(
               initializeRating: item.rate,

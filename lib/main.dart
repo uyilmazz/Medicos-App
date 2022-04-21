@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:medicos_app/view/doctor/view/doctor_appointment.dart';
 import 'view/user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import 'view/home/view/home_page.dart';
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       title: 'Material App',
-      home: DoctorAppointmentView(),
+      home: HomePage(),
     );
   }
 }
