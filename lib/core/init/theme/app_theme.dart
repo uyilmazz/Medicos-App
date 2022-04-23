@@ -4,10 +4,7 @@ import 'Iapp_theme.dart';
 
 class AppTheme extends IAppTheme {
   static AppTheme? _instance;
-  static AppTheme get instance {
-    _instance ??= AppTheme._init();
-    return _instance!;
-  }
+  static AppTheme get instance => _instance ??= AppTheme._init();
 
   AppTheme._init();
 

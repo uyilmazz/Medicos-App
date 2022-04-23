@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../core/constants/image_constant.dart';
 import 'package:provider/provider.dart';
-import '../../../core/constants/app_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
@@ -80,7 +80,8 @@ class SearchBox extends StatelessWidget {
                   style: context.textTheme.subtitle1!
                       .copyWith(fontSize: 18, fontWeight: FontWeight.w500)),
           Container(
-              child: Image.asset(AppConstants.searchImage.toImagePng),
+              child:
+                  Image.asset(ImageConstants.instance.searchImage.toImagePng),
               height: context.height * 0.13,
               decoration: const BoxDecoration(color: Colors.transparent))
         ],

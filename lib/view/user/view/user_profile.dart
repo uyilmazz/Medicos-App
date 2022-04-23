@@ -34,8 +34,8 @@ class UserProfile extends StatelessWidget {
             CustomFabButton(
                 text: LocaleKeys.profile_editProfile.locale,
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => EditProfile()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const EditProfile()));
                 }),
             SizedBox(height: context.normalValue * 1.5),
             _changeButton(context, () {

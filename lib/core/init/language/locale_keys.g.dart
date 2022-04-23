@@ -82,4 +82,26 @@ abstract class LocaleKeys {
   static const userAppointment_past = 'userAppointment.past';
   static const userAppointment_cancel = 'userAppointment.cancel';
   static const userAppointment = 'userAppointment';
+  static const login_welcomeBack = 'login.welcomeBack';
+  static const login_password = 'login.password';
+  static const login_logIn = 'login.logIn';
+  static const login_forgotPassword = 'login.forgotPassword';
+  static const login_reset = 'login.reset';
+  static const login_dontHaveAnAccount = 'login.dontHaveAnAccount';
+  static const login_createAccount = 'login.createAccount';
+  static const login_orLoginWith = 'login.orLoginWith';
+  static const login_signUp = 'login.signUp';
+  static const login_alreadyHaveAnAccout = 'login.alreadyHaveAnAccout';
+  static const login_signIn = 'login.signIn';
+  static const login_verification = 'login.verification';
+  static const login_verificationDescText = 'login.verificationDescText';
+  static const login_resendIn = 'login.resendIn';
+  static const login_dontReceiveCode = 'login.dontReceiveCode';
+  static const login_resend = 'login.resend';
+  static const login_successVerification = 'login.successVerification';
+  static const login_loginNow = 'login.loginNow';
+  static const login = 'login';
+  static const forgot_forgotPassword = 'forgot.forgotPassword';
+  static const forgot_createNewPasssword = 'forgot.createNewPasssword';
+  static const forgot = 'forgot';
 }

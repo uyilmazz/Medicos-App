@@ -77,5 +77,29 @@
         "upcoming": "Yaklaşan",
         "past": "Geçmiş",
         "cancel": "İptal Et"
+    },
+    "login": {
+        "welcomeBack": "Tekrar Hoşgeldiniz!",
+        "password": "Password",
+        "logIn": "Giriş Yap",
+        "forgotPassword": "Parolanızı mı unuttunuz?",
+        "reset": "Sıfırla",
+        "dontHaveAnAccount": "Hesabınız yok mu?",
+        "createAccount": "Hesap Oluştur",
+        "orLoginWith": "Veya giriş yapın",
+        "signUp": "Kayıt Ol",
+        "alreadyHaveAnAccout": "Zaten bir hesabın var mı?",
+        "signIn": "Giriş Yap",
+        "verification": "Doğrulama",
+        "verificationDescText": "Doğrulama için cep telefonu numaranıza gönderdiğimiz kodu girin",
+        "resendIn": "Yeniden Gönderin",
+        "dontReceiveCode": "Kod almadınız mı?",
+        "resend": "Yeniden Gönder",
+        "successVerification": "Hesap başarıyla oluşturuldu",
+        "loginNow": "Şimdi Giriş Yap"
+    },
+    "forgot": {
+        "forgotPassword": "Şifrenizi mi unuttunuz",
+        "createNewPasssword": "Yeni Password oluştur"
     }
 }

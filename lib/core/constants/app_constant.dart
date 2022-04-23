@@ -1,6 +1,6 @@
 class AppConstants {
-  static String searchImage = 'search';
-  static String languagePath = 'assets/lang';
-  // ignore: non_constant_identifier_names
-  static String FONT_FAMILY = 'Montserrat';
+  static const languagePath = 'assets/lang';
+
+  // ignore: constant_identifier_names
+  static const FONT_FAMILY = 'Montserrat';
 }

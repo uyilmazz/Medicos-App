@@ -48,9 +48,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   BackArrowAppBar(
                       centerText: LocaleKeys.profile_changePassword.locale),
                   SizedBox(height: context.mediumValue * 2),
-                  _oldPasswordFormItem(context),
-                  _newPasswordFormItem(context),
-                  _confirmPassswordFormItem(context),
+                  _oldPasswordFormItem,
+                  _newPasswordFormItem,
+                  _confirmPassswordFormItem,
                   SizedBox(height: context.height * 0.05),
                   CustomFabButton(text: LocaleKeys.profile_done.locale)
                 ],
@@ -58,54 +58,57 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             )));
   }
 
-  FormItem _oldPasswordFormItem(BuildContext context) {
-    return FormItem(
-      headText: LocaleKeys.profile_oldPassword.locale,
-      bottomSpace: context.normalValue,
-      textformField: PasswordTextFormField(
-          controller: _oldPasswordController,
-          suffixOnPressed: () {
-            setState(() {
-              _oldPasswordObsure = !_oldPasswordObsure;
-            });
-          },
-          obsure: _oldPasswordObsure,
-          maxLine: 1,
-          validateFunc: (value) {}),
-    );
-  }
+  FormItem get _oldPasswordFormItem => FormItem(
+        headText: LocaleKeys.profile_oldPassword.locale,
+        bottomSpace: context.normalValue,
+        textformField: PasswordTextFormField(
+            context: context,
+            controller: _oldPasswordController,
+            suffixOnPressed: () {
+              setState(() {
+                _oldPasswordObsure = !_oldPasswordObsure;
+              });
+            },
+            obcure: _oldPasswordObsure,
+            maxLine: 1,
+            validateFunc: (value) {
+              return null;
+            }),
+      );
 
-  FormItem _newPasswordFormItem(BuildContext context) {
-    return FormItem(
-      headText: LocaleKeys.profile_newPassword.locale,
-      bottomSpace: context.normalValue,
-      textformField: PasswordTextFormField(
-          controller: _newPasswordController,
-          suffixOnPressed: () {
-            setState(() {
-              _newPasswordObsure = !_newPasswordObsure;
-            });
-          },
-          obsure: _newPasswordObsure,
-          maxLine: 1,
-          validateFunc: (value) {}),
-    );
-  }
+  FormItem get _newPasswordFormItem => FormItem(
+        headText: LocaleKeys.profile_newPassword.locale,
+        bottomSpace: context.normalValue,
+        textformField: PasswordTextFormField(
+            context: context,
+            controller: _newPasswordController,
+            suffixOnPressed: () {
+              setState(() {
+                _newPasswordObsure = !_newPasswordObsure;
+              });
+            },
+            obcure: _newPasswordObsure,
+            maxLine: 1,
+            validateFunc: (value) {
+              return null;
+            }),
+      );
 
-  FormItem _confirmPassswordFormItem(BuildContext context) {
-    return FormItem(
-      headText: LocaleKeys.profile_confirmPassword.locale,
-      bottomSpace: context.normalValue,
-      textformField: PasswordTextFormField(
-          controller: _confirmPasswordController,
-          suffixOnPressed: () {
-            setState(() {
-              _confirmPasswordObsure = !_confirmPasswordObsure;
-            });
-          },
-          obsure: _confirmPasswordObsure,
-          maxLine: 1,
-          validateFunc: (value) {}),
-    );
-  }
+  FormItem get _confirmPassswordFormItem => FormItem(
+        headText: LocaleKeys.profile_confirmPassword.locale,
+        bottomSpace: context.normalValue,
+        textformField: PasswordTextFormField(
+            context: context,
+            controller: _confirmPasswordController,
+            suffixOnPressed: () {
+              setState(() {
+                _confirmPasswordObsure = !_confirmPasswordObsure;
+              });
+            },
+            obcure: _confirmPasswordObsure,
+            maxLine: 1,
+            validateFunc: (value) {
+              return null;
+            }),
+      );
 }
