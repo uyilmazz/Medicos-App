@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../../product/widgets/text/experience_rich_text.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 import '../../../core/widgets/rating_bar/rating_bar.dart';
 import '../../../product/widgets/stack/search_box.dart';
-import 'doctor_profile.dart';
-import '../view_model/doctor_view_model.dart';
+import '../../../product/widgets/text/experience_rich_text.dart';
 import '../model/doctor.dart';
+import '../view_model/doctor_view_model.dart';
+import 'doctor_profile.dart';
 
 class DoctorView extends StatelessWidget {
   const DoctorView({Key? key}) : super(key: key);

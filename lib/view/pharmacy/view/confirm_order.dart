@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
-import '../../home/view/home_page.dart';
 import '../../../product/widgets/button/custom_fab_button.dart';
+import '../../home/view/home_page.dart';
+import '../../user/view_model/user_view_model.dart';
 
 class ConfirmOrder extends StatelessWidget {
   const ConfirmOrder({Key? key}) : super(key: key);

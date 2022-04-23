@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-
+import '../../../core/extensions/context_extension.dart';
 import '../../../core/widgets/text_form_field/custom_text_form_field.dart';
 
 class PasswordTextFormField extends CustomTextFormField {
   final TextEditingController controller;
   final int? maxLine;
   final ValidateFunction validateFunc;
-  final bool? obsure;
+  final bool? obcure;
   final void Function()? suffixOnPressed;
+  final BuildContext context;
 
   PasswordTextFormField({
-    this.obsure = true,
+    required this.context,
+    this.obcure = true,
     Key? key,
     required this.controller,
     this.suffixOnPressed,
@@ -19,10 +21,13 @@ class PasswordTextFormField extends CustomTextFormField {
   }) : super(
             key: key,
             maxLines: maxLine,
-            isObsure: obsure,
+            isObsure: obcure,
             textEditingController: controller,
             suffixIcon: IconButton(
+                padding: EdgeInsets.only(right: context.lowValue * 2),
                 onPressed: suffixOnPressed,
-                icon: const Icon(Icons.visibility, color: Colors.black)),
+                icon: Icon(Icons.visibility,
+                    color: context.theme.colorScheme.onSurface,
+                    size: context.normalValue * 1.4)),
             validate: validateFunc);
 }

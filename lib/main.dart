@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'view/user/view/login_page.dart';
 import 'view/user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
-import 'view/home/view/home_page.dart';
 import 'core/constants/app_constant.dart';
 import 'core/init/language/language_manager.dart';
 import 'core/init/theme/app_theme.dart';
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       title: 'Material App',
-      home: HomePage(),
+      home: const LoginView(),
     );
   }
 }

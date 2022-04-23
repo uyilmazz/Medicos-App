@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 import '../../../product/widgets/button/custom_fab_button.dart';
 import '../../../product/widgets/row/back_arrow_app_bar.dart';
+import '../../user/view_model/user_view_model.dart';
 import 'confirm_order.dart';
 
 class ShippingDetail extends StatelessWidget {

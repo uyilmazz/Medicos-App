@@ -77,5 +77,29 @@
         "upcoming": "Upcoming",
         "past": "Past",
         "cancel": "Cancel"
+    },
+    "login": {
+        "welcomeBack": "Welcome Back!",
+        "password": "Password",
+        "logIn": "Log In",
+        "forgotPassword": "Forgot Password?",
+        "reset": "Reset",
+        "dontHaveAnAccount": "Don't have an account?",
+        "createAccount": "Create Account",
+        "orLoginWith": "Or login with",
+        "signUp": "Sign Up",
+        "alreadyHaveAnAccout": "Already have an account?",
+        "signIn": "Sign In",
+        "verification": "Verification",
+        "verificationDescText": "Enter the code we have sent you on your mobile number for verification",
+        "resendIn": "Resend In",
+        "dontReceiveCode": "Don't Receive Code?",
+        "resend": "Resend",
+        "successVerification": "Account created Successfully",
+        "loginNow": "Login Now"
+    },
+    "forgot": {
+        "forgotPassword": "Forgot Password",
+        "createNewPasssword": "Create New Password"
     }
 }
