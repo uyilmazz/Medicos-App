@@ -11,4 +11,6 @@ class ImageConstants {
   String get loginFaceBookIcon => 'facebook';
   String get loginGoogleIcon => 'google';
   String get successVerificationImage => 'success_verification';
+  String get welcomeScreen => 'welcome_screen';
+  String get getStartedScreen => 'get_started_view';
 }

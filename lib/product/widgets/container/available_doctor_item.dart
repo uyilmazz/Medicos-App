@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../../../core/init/language/locale_keys.g.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
+import '../../../core/init/language/locale_keys.g.dart';
 import '../../../view/doctor/model/doctor.dart';
 import '../text/fitted_box.dart';
 

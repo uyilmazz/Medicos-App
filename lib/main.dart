@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'view/user/view/login_page.dart';
+import 'view/onboard/view/welcome_screen_view.dart';
 import 'view/user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import 'core/constants/app_constant.dart';
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       title: 'Material App',
-      home: const LoginView(),
+      home: const WelcomeScreenView(),
     );
   }
 }

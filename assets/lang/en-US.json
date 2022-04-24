@@ -101,5 +101,17 @@
     "forgot": {
         "forgotPassword": "Forgot Password",
         "createNewPasssword": "Create New Password"
+    },
+    "welcomeScreen": {
+        "getStarted": "Get Started",
+        "welcomeDesc": "Platform for online consultations and medication purchases",
+        "welcomeTo": "WELCOME TO"
+    },
+    "startedSlider": {
+        "lookingForaDoctor": "Looking for a Doctor ?",
+        "wantaDoctorAppointment": "Want a doctor's appointment?",
+        "wantAnOnlineDoctor": "Want an online doctor’s advice ?",
+        "sliderDesc": "Thousands of trustworthy physicians access immediately",
+        "next": "Next"
     }
 }

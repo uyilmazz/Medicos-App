@@ -1,8 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: constant_identifier_names
-
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const welcome = 'welcome';
   static const goodMorning = 'goodMorning';
   static const search_findYour = 'search.findYour';
@@ -64,20 +62,14 @@ abstract class LocaleKeys {
   static const profile = 'profile';
   static const doctorAppointment_appointment = 'doctorAppointment.appointment';
   static const doctorAppointment_schedule = 'doctorAppointment.schedule';
-  static const doctorAppointment_availableTimings =
-      'doctorAppointment.availableTimings';
-  static const doctorAppointment_morningSlots =
-      'doctorAppointment.morningSlots';
-  static const doctorAppointment_afternoonSlots =
-      'doctorAppointment.afternoonSlots';
-  static const doctorAppointment_eveningSlots =
-      'doctorAppointment.eveningSlots';
-  static const doctorAppointment_bookAppointment =
-      'doctorAppointment.bookAppointment';
+  static const doctorAppointment_availableTimings = 'doctorAppointment.availableTimings';
+  static const doctorAppointment_morningSlots = 'doctorAppointment.morningSlots';
+  static const doctorAppointment_afternoonSlots = 'doctorAppointment.afternoonSlots';
+  static const doctorAppointment_eveningSlots = 'doctorAppointment.eveningSlots';
+  static const doctorAppointment_bookAppointment = 'doctorAppointment.bookAppointment';
   static const doctorAppointment_confirm = 'doctorAppointment.confirm';
   static const doctorAppointment = 'doctorAppointment';
-  static const userAppointment_myAppointments =
-      'userAppointment.myAppointments';
+  static const userAppointment_myAppointments = 'userAppointment.myAppointments';
   static const userAppointment_upcoming = 'userAppointment.upcoming';
   static const userAppointment_past = 'userAppointment.past';
   static const userAppointment_cancel = 'userAppointment.cancel';
@@ -104,4 +96,15 @@ abstract class LocaleKeys {
   static const forgot_forgotPassword = 'forgot.forgotPassword';
   static const forgot_createNewPasssword = 'forgot.createNewPasssword';
   static const forgot = 'forgot';
+  static const welcomeScreen_getStarted = 'welcomeScreen.getStarted';
+  static const welcomeScreen_welcomeDesc = 'welcomeScreen.welcomeDesc';
+  static const welcomeScreen_welcomeTo = 'welcomeScreen.welcomeTo';
+  static const welcomeScreen = 'welcomeScreen';
+  static const startedSlider_lookingForaDoctor = 'startedSlider.lookingForaDoctor';
+  static const startedSlider_wantaDoctorAppointment = 'startedSlider.wantaDoctorAppointment';
+  static const startedSlider_wantAnOnlineDoctor = 'startedSlider.wantAnOnlineDoctor';
+  static const startedSlider_sliderDesc = 'startedSlider.sliderDesc';
+  static const startedSlider_next = 'startedSlider.next';
+  static const startedSlider = 'startedSlider';
+
 }
