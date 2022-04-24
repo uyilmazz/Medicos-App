@@ -101,5 +101,17 @@
     "forgot": {
         "forgotPassword": "Şifrenizi mi unuttunuz",
         "createNewPasssword": "Yeni Password oluştur"
+    },
+    "welcomeScreen": {
+        "getStarted": "Başla",
+        "welcomeDesc": "Çevrimiçi danışma ve ilaç satın alma platformu",
+        "welcomeTo": "HOŞ GELDİNİZ"
+    },
+    "startedSlider": {
+        "lookingForaDoctor": "Doktor mu arıyorsunuz ?",
+        "wantaDoctorAppointment": "Doktor randevusu mu istiyorsunuz ?",
+        "wantAnOnlineDoctor": "Çevrimiçi bir doktor tavsiyesi ister misiniz?",
+        "sliderDesc": "Binlerce güvenilir hekim anında erişiyor",
+        "next": "Sonraki"
     }
 }

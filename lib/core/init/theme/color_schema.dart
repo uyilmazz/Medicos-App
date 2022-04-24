@@ -19,7 +19,9 @@ class CustomColorSchema {
       onError: Color(0xFFA7979B), // +
       background: Color(0xFF73696C), // +
       onBackground: Color(0xFF828282), // +
-      tertiary: Color(0xFFDD505A),
+      tertiary: Color(0xFFDD505A), // +
+      // onTertiaryContainer: Color(0xFFEBEBEB),
+      surfaceVariant: Color(0xFFEBEBEB),
       onTertiary: Color(0xFF00FF00),
       surface: Colors.black12, // +
       onSurface: Colors.black); // +
