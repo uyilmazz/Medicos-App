@@ -39,24 +39,24 @@ class CustomTextFormField extends StatelessWidget {
       textAlignVertical: TextAlignVertical.top,
       validator: validate,
       decoration: InputDecoration(
-        suffixIcon: suffixIcon,
-        filled: true,
-        fillColor: context.theme.colorScheme.onSecondary,
-        isDense: true,
-        contentPadding: EdgeInsets.only(
-            left: context.normalValue,
-            right: context.normalValue,
-            top: context.normalValue * 0.7,
-            bottom: context.normalValue * 1.5),
-        enabledBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: context.theme.scaffoldBackgroundColor),
-            borderRadius: BorderRadius.circular(context.normalValue * 1.2)),
-        focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: context.theme.scaffoldBackgroundColor),
-            borderRadius: BorderRadius.circular(context.normalValue * 1.2)),
-      ),
+          suffixIcon: suffixIcon,
+          filled: true,
+          fillColor: context.theme.colorScheme.onSecondary,
+          isDense: true,
+          contentPadding: EdgeInsets.only(
+              left: context.normalValue,
+              right: context.normalValue,
+              top: context.normalValue * 0.7,
+              bottom: context.normalValue * 1.5),
+          enabledBorder: _outlinedBorder(context),
+          focusedBorder: _outlinedBorder(context),
+          errorBorder: _outlinedBorder(context)),
     );
+  }
+
+  OutlineInputBorder _outlinedBorder(BuildContext context) {
+    return OutlineInputBorder(
+        borderSide: BorderSide(color: context.theme.scaffoldBackgroundColor),
+        borderRadius: BorderRadius.circular(context.normalValue * 1.2));
   }
 }

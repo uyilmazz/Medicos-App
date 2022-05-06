@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicos_app/core/init/cache/local_cache_manager.dart';
 import '../../../core/base/view_model/base_view_model.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../model/onboard_model.dart';
@@ -14,6 +15,11 @@ abstract class _OnboardViewModelBase with Store, BaseViewModel {
   @observable
   List<OnBoard>? onboardList;
 
+  final LocalCacheManager _localCacheManar = LocalCacheManager.instance;
+
+  @observable
+  bool isFirstInstall = true;
+
   @observable
   int pageViewItemIndex = 0;
 
@@ -24,6 +30,7 @@ abstract class _OnboardViewModelBase with Store, BaseViewModel {
 
   @override
   void init() {
+    isFirtInstallControl();
     onboardList = [
       OnBoard('onboard1', LocaleKeys.startedSlider_lookingForaDoctor.locale),
       OnBoard(
@@ -35,5 +42,15 @@ abstract class _OnboardViewModelBase with Store, BaseViewModel {
   @action
   void changePageViewItemIndex(int value) {
     pageViewItemIndex = value;
+  }
+
+  @action
+  void isFirtInstallControl() {
+    isFirstInstall = _localCacheManar.getFirstInstall();
+  }
+
+  @action
+  Future<void> isFirstInstallUpdate() async {
+    await _localCacheManar.firstInstallSave();
   }
 }

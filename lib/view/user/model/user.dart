@@ -1,53 +1,36 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../pharmacy/model/product.dart';
-
 part 'user.g.dart';
 
 @JsonSerializable()
 class User {
+  @JsonKey(name: "_id")
+  String? sId;
   String? name;
-  String? imageUrl;
   String? email;
+  String? password;
+  List<String>? appointments;
+  // List<String>? cart;
   String? phoneNumber;
   String? address;
-  Cart? cart;
+  String? imageUrl;
   int? zipCode;
+  String? token;
 
   User(
-      {this.name,
-      this.imageUrl,
+      {this.sId,
+      this.name,
       this.email,
+      this.password,
+      this.appointments,
+      // this.cart,
       this.phoneNumber,
       this.address,
-      this.cart,
-      this.zipCode});
+      this.imageUrl,
+      this.zipCode,
+      this.token});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
-}
-
-@JsonSerializable()
-class Cart {
-  List<CartItems>? cartItems;
-
-  Cart({this.cartItems});
-
-  factory Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CartToJson(this);
-}
-
-@JsonSerializable()
-class CartItems {
-  Product? product;
-  int? quantity;
-
-  CartItems({this.product, this.quantity = 0});
-
-  factory CartItems.fromJson(Map<String, dynamic> json) =>
-      _$CartItemsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CartItemsToJson(this);
 }

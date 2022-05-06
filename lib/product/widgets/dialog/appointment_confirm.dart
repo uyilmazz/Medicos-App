@@ -168,7 +168,7 @@ class AppointmentConfirmDialog extends StatelessWidget {
         top: context.height * 0.00,
         child: CircleAvatar(
             radius: context.height * 0.06,
-            child: Image.asset((doctor.profileUrl ?? 'serena').toImagePng,
+            child: Image.asset((doctor.profilUrl ?? 'serena').toImagePng,
                 fit: BoxFit.fill)));
   }
 }

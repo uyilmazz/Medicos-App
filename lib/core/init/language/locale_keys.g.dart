@@ -25,6 +25,8 @@ abstract class  LocaleKeys {
   static const patient = 'patient';
   static const ratings = 'ratings';
   static const star = 'star';
+  static const about = 'about';
+  static const doctorNotFound = 'doctorNotFound';
   static const cart_shoppingCart = 'cart.shoppingCart';
   static const cart_order = 'cart.order';
   static const cart_delivery = 'cart.delivery';
@@ -59,6 +61,10 @@ abstract class  LocaleKeys {
   static const profile_oldPassword = 'profile.oldPassword';
   static const profile_newPassword = 'profile.newPassword';
   static const profile_confirmPassword = 'profile.confirmPassword';
+  static const profile_oldPasswordValidate = 'profile.oldPasswordValidate';
+  static const profile_newPasswordValidate = 'profile.newPasswordValidate';
+  static const profile_confirmPasswordValidate = 'profile.confirmPasswordValidate';
+  static const profile_profileUpdatedMessage = 'profile.profileUpdatedMessage';
   static const profile = 'profile';
   static const doctorAppointment_appointment = 'doctorAppointment.appointment';
   static const doctorAppointment_schedule = 'doctorAppointment.schedule';

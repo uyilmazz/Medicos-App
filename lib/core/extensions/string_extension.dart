@@ -6,6 +6,11 @@ extension StringExtension on String {
 
   String get toIconPng => 'assets/icons/$this.png';
 
+  String get doctorName => 'Dr. $this';
+  String get dolarPrice => '\$ $this';
+
+  String get networkUrl => 'http://10.0.2.2:3000/$this';
+
   String get locale => this.tr();
   String paramLocale(List<String> args) => this.tr(args: args);
 

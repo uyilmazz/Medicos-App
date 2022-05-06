@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medicos_app/core/base/view/base_widget.dart';
+import 'package:medicos_app/view/onboard/view_model/onboard_view_model.dart';
 import '../../../core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -12,14 +14,19 @@ class GetStartedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(flex: 25, child: _imageAndGetStartedText(context)),
-          Expanded(flex: 12, child: _signInAndSignUpButton(context)),
-        ],
-      ),
-    );
+    return BaseView<OnboardViewModel>(
+        viewModel: OnboardViewModel(),
+        onModelReady: (model) {},
+        onPageBuilder: (context, viewModel) => Scaffold(
+              body: Column(
+                children: [
+                  Expanded(flex: 25, child: _imageAndGetStartedText(context)),
+                  Expanded(
+                      flex: 12,
+                      child: _signInAndSignUpButton(context, viewModel)),
+                ],
+              ),
+            ));
   }
 
   Column _imageAndGetStartedText(BuildContext context) {
@@ -37,7 +44,8 @@ class GetStartedScreen extends StatelessWidget {
     );
   }
 
-  Container _signInAndSignUpButton(BuildContext context) {
+  Container _signInAndSignUpButton(
+      BuildContext context, OnboardViewModel viewModel) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -51,7 +59,9 @@ class GetStartedScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GradientButton(
-              onTap: () {
+              onTap: () async {
+                await viewModel.isFirstInstallUpdate();
+
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) => const LoginView()),
                     (route) => false);
@@ -60,7 +70,8 @@ class GetStartedScreen extends StatelessWidget {
               width: context.width * 0.65),
           SizedBox(height: context.height * 0.035),
           GradientButton(
-              onTap: () {
+              onTap: () async {
+                await viewModel.isFirstInstallUpdate();
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
                         builder: (context) => const RegisterView()),

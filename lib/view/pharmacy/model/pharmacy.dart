@@ -5,20 +5,15 @@ part 'pharmacy.g.dart';
 
 @JsonSerializable()
 class Pharmacy extends MedicineModel {
-  final String? name;
-  final String? imageUrl;
+  @JsonKey(name: '_id')
+  String? sId;
+  String? name;
+  String? imageUrl;
 
-  Pharmacy(this.name, this.imageUrl);
-
-  static List<Pharmacy> getFakePharmacyList() {
-    return [
-      Pharmacy('Injection', 'Injection'),
-      Pharmacy('Bandages', 'Bandages'),
-      Pharmacy('Equipment', 'Equipment'),
-      Pharmacy('Medicines', 'Medicines'),
-    ];
-  }
+  Pharmacy({this.sId, this.name, this.imageUrl});
 
   factory Pharmacy.fromJson(Map<String, dynamic> json) =>
       _$PharmacyFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PharmacyToJson(this);
 }

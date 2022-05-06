@@ -1,62 +1,31 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:medicos_app/view/department/model/department.dart';
 
 part 'doctor.g.dart';
 
 @JsonSerializable()
 class Doctor {
+  @JsonKey(name: "_id")
+  String? id;
   String? name;
-  String? profileUrl;
-  String? specialist;
+  Department? department;
+  String? about;
   int? experience;
+  String? profilUrl;
   double? rate;
+  int? patience;
+  bool? available;
 
   Doctor(
-      {this.name,
-      this.profileUrl,
-      this.specialist,
+      {this.id,
+      this.name,
+      this.department,
+      this.about,
       this.experience,
-      this.rate});
-
-  static List<Doctor> getFakeDoctorList() {
-    return [
-      Doctor(
-          name: "Serena",
-          experience: 4,
-          profileUrl: "serena",
-          rate: 3.5,
-          specialist: 'Heart'),
-      Doctor(
-          name: "Albert Flores",
-          experience: 2,
-          profileUrl: "albert",
-          rate: 2,
-          specialist: 'Heart'),
-      Doctor(
-          name: "Jacob Jones",
-          experience: 5,
-          profileUrl: "jacob",
-          rate: 5,
-          specialist: 'Heart'),
-      Doctor(
-          name: "Devon Lane",
-          experience: 1,
-          profileUrl: "devon",
-          rate: 4,
-          specialist: 'Heart'),
-      Doctor(
-          name: "Ronald Richards",
-          experience: 2,
-          profileUrl: "ronald",
-          rate: 3,
-          specialist: 'Heart'),
-      Doctor(
-          name: "Albert Flores",
-          experience: 2,
-          profileUrl: "albert",
-          rate: 2,
-          specialist: 'Heart'),
-    ];
-  }
+      this.profilUrl,
+      this.rate,
+      this.patience,
+      this.available});
 
   factory Doctor.fromJson(Map<String, dynamic> json) => _$DoctorFromJson(json);
 

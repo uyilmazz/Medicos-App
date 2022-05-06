@@ -27,13 +27,14 @@ class PharmacyView extends StatelessWidget {
         },
         onPageBuilder: (context, viewModel) => Observer(
             builder: (context) => DefaultTabController(
-                  length: viewModel.fakePharmacyList.length,
+                  length: viewModel.pharmacy != null
+                      ? viewModel.pharmacy!.length
+                      : 0,
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        HomeAppBar(
-                            imageUrl: 'profile'.toImagePng, isShop: true),
+                        const HomeAppBar(isShop: true),
                         Text(context.watch<UserViewModel>().fakeUser.name ?? '',
                             style: context.textTheme.subtitle1!.copyWith(
                                 fontSize: 18, fontWeight: FontWeight.w500)),
@@ -65,23 +66,22 @@ class PharmacyView extends StatelessWidget {
       Observer(
           builder: (context) => SizedBox(
               height: context.height * 0.16,
-              child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: List.generate(
-                      viewModel.fakePharmacyList.length,
-                      (index) => _tabBarItem(
-                          context,
-                          viewModel.fakePharmacyList[index],
-                          viewModel,
-                          index)))));
+              child: viewModel.pharmacy != null
+                  ? ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: List.generate(
+                          viewModel.pharmacy!.length,
+                          (index) => _tabBarItem(context,
+                              viewModel.pharmacy![index], viewModel, index)))
+                  : const SizedBox()));
 
   Padding _tabBarItem(BuildContext context, MedicineModel currentModel,
       PharmacyViewModel viewModel, int itemIndex) {
     return Padding(
       padding: EdgeInsets.only(right: context.lowValue),
       child: GestureDetector(
-          onTap: () {
-            viewModel.changeTabBarItem(itemIndex);
+          onTap: () async {
+            await viewModel.changeTabBarItem(itemIndex);
           },
           child: HomePageItem(
               medicineItem: currentModel,

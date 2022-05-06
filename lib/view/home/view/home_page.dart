@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:medicos_app/view/department/view_model/department_view_model.dart';
+import 'package:medicos_app/view/home/view/home_content.dart';
 import '../../doctor/view_model/doctor_view_model.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
-import '../../../core/init/language/locale_keys.g.dart';
-import '../../../product/widgets/container/available_doctor_item.dart';
-import '../../../product/widgets/container/home_page_item.dart';
-import '../../../product/widgets/row/head_text_see_all.dart';
-import '../../../product/widgets/row/home_app.dart';
-import '../../../product/widgets/stack/search_box.dart';
 import '../../department/view/department_view.dart';
 import '../../pharmacy/view/pharmacy_view.dart';
 import '../view_model/home_view_model.dart';
@@ -17,7 +13,8 @@ import '../view_model/home_view_model.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  final DoctorViewModel _doctorViewModel = DoctorViewModel();
+  final _doctorViewModel = DoctorViewModel();
+  final _departmentViewModel = DepartmentViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +29,7 @@ class HomePage extends StatelessWidget {
           bottomNavigationBar: _buildNavigationBar(context, homeViewModel),
           body: Padding(
             padding: context.appPadding,
-            child: _setContent(context, homeViewModel),
+            child: _setContent(context, homeViewModel, _departmentViewModel),
           )),
     );
   }
@@ -82,68 +79,16 @@ class HomePage extends StatelessWidget {
         label: '');
   }
 
-  Widget _setContent(BuildContext context, HomeViewModel homeViewModel) =>
+  Widget _setContent(BuildContext context, HomeViewModel homeViewModel,
+          DepartmentViewModel departmentViewModel) =>
       Observer(builder: (context) {
         return homeViewModel.bottomNavigationBarIndex == 0
-            ? _homeContent(context, homeViewModel)
+            // ? _homeContent(context, homeViewModel, departmentViewModel)
+            ? HomeContent()
             : homeViewModel.bottomNavigationBarIndex == 1
                 ? DepartmentPage(department: homeViewModel.getAllDepartments)
                 : homeViewModel.bottomNavigationBarIndex == 2
                     ? const PharmacyView()
                     : const SizedBox();
       });
-
-  Widget _homeContent(BuildContext context, HomeViewModel homeViewModel) =>
-      SingleChildScrollView(
-        child: Column(
-          children: [
-            HomeAppBar(imageUrl: 'profile'.toImagePng),
-            const SearchBox(),
-            SizedBox(height: context.normalValue),
-            const HeadAndSeeAllText(headText: LocaleKeys.departments),
-            SizedBox(height: context.lowValue),
-            _scroolMedicineItem(
-                context, homeViewModel, homeViewModel.fakeDepartment),
-            SizedBox(height: context.normalValue),
-            const HeadAndSeeAllText(headText: LocaleKeys.pharmacy),
-            SizedBox(height: context.normalValue),
-            _scroolMedicineItem(
-                context, homeViewModel, homeViewModel.fakePharmacy),
-            SizedBox(height: context.mediumValue),
-            const HeadAndSeeAllText(headText: LocaleKeys.availableDoctors),
-            SizedBox(height: context.normalValue),
-            _scroolDoctorItem(
-                context, homeViewModel, _doctorViewModel.fakeDoctorList),
-            SizedBox(height: context.normalValue),
-          ],
-        ),
-      );
-
-  Widget _scroolMedicineItem(
-          BuildContext context, HomeViewModel homeViewModel, List? items) =>
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Wrap(
-            alignment: WrapAlignment.start,
-            spacing: context.lowValue,
-            children: items == null
-                ? [const SizedBox()]
-                : items
-                    .map((department) => HomePageItem(medicineItem: department))
-                    .toList()),
-      );
-
-  Widget _scroolDoctorItem(BuildContext context, HomeViewModel homeViewModel,
-          List? availableDoctorList) =>
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Wrap(
-            alignment: WrapAlignment.start,
-            spacing: context.lowValue,
-            children: availableDoctorList == null
-                ? [const SizedBox()]
-                : availableDoctorList
-                    .map((doctor) => AvailabeDoctorItem(doctor: doctor))
-                    .toList()),
-      );
 }

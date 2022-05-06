@@ -76,7 +76,7 @@ class SearchBox extends StatelessWidget {
         children: [
           isBack
               ? BackArrowButton(context)
-              : Text(context.watch<UserViewModel>().fakeUser.name ?? '',
+              : Text(context.watch<UserViewModel>().user?.name ?? '',
                   style: context.textTheme.subtitle1!
                       .copyWith(fontSize: 18, fontWeight: FontWeight.w500)),
           Container(

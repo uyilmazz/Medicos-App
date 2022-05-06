@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicos_app/view/department/model/department.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
@@ -18,9 +19,9 @@ class DoctorAppointmentView extends StatelessWidget {
   final Doctor _doctor = Doctor(
       name: "Serena",
       experience: 4,
-      profileUrl: "doctor_profile",
+      profilUrl: "doctor_profile",
       rate: 3.5,
-      specialist: 'Heart');
+      department: Department(name: "Heart"));
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +103,7 @@ class DoctorAppointmentView extends StatelessWidget {
     return Container(
         height: context.height * 0.12,
         decoration: const BoxDecoration(shape: BoxShape.circle),
-        child: Image.asset((item.profileUrl ?? 'profile').toImagePng,
+        child: Image.asset((item.profilUrl ?? 'profile').toImagePng,
             fit: BoxFit.fill));
   }
 
@@ -117,7 +118,7 @@ class DoctorAppointmentView extends StatelessWidget {
                 .copyWith(fontWeight: FontWeight.w600)),
         Text(
             LocaleKeys.specialist
-                .paramLocale([(_doctor.specialist ?? '').toString()]),
+                .paramLocale([(_doctor.department?.name ?? '').toString()]),
             overflow: TextOverflow.ellipsis,
             style: context.textTheme.subtitle2!.copyWith(
                 letterSpacing: -0.2,

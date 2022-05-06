@@ -24,6 +24,8 @@
     "patient": "Hasta",
     "ratings": "Derecelendirme",
     "star": "{} yıldız",
+    "about": "Hakkında",
+    "doctorNotFound": "{} uzmanı doktoru bulunamadı.",
     "cart": {
         "shoppingCart": "Alışveriş Sepeti",
         "order": "Sipariş",
@@ -60,7 +62,11 @@
         "done": "Tamamla",
         "oldPassword": "Eski Şifre",
         "newPassword": "Yeni Şifre",
-        "confirmPassword": "Şifre Onayla"
+        "confirmPassword": "Şifre Onayla",
+        "oldPasswordValidate": "Mevcut şifrenizi yanlış girdiniz!",
+        "newPasswordValidate": "Yeni şifre en az 3 karakter olmalıdır!",
+        "confirmPasswordValidate": "Parolalar uyuşmuyor!",
+        "profileUpdatedMessage": "Profil başarıyla güncellendi"
     },
     "doctorAppointment": {
         "appointment": "Randevu",

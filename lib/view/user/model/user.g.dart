@@ -7,45 +7,29 @@ part of 'user.dart';
 // **************************************************************************
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
+      sId: json['_id'] as String?,
       name: json['name'] as String?,
-      imageUrl: json['imageUrl'] as String?,
       email: json['email'] as String?,
+      password: json['password'] as String?,
+      appointments: (json['appointments'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       phoneNumber: json['phoneNumber'] as String?,
       address: json['address'] as String?,
-      cart: json['cart'] == null
-          ? null
-          : Cart.fromJson(json['cart'] as Map<String, dynamic>),
+      imageUrl: json['imageUrl'] as String?,
       zipCode: json['zipCode'] as int?,
+      token: json['token'] as String?,
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      '_id': instance.sId,
       'name': instance.name,
-      'imageUrl': instance.imageUrl,
       'email': instance.email,
+      'password': instance.password,
+      'appointments': instance.appointments,
       'phoneNumber': instance.phoneNumber,
       'address': instance.address,
-      'cart': instance.cart,
+      'imageUrl': instance.imageUrl,
       'zipCode': instance.zipCode,
-    };
-
-Cart _$CartFromJson(Map<String, dynamic> json) => Cart(
-      cartItems: (json['cartItems'] as List<dynamic>?)
-          ?.map((e) => CartItems.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$CartToJson(Cart instance) => <String, dynamic>{
-      'cartItems': instance.cartItems,
-    };
-
-CartItems _$CartItemsFromJson(Map<String, dynamic> json) => CartItems(
-      product: json['product'] == null
-          ? null
-          : Product.fromJson(json['product'] as Map<String, dynamic>),
-      quantity: json['quantity'] as int? ?? 0,
-    );
-
-Map<String, dynamic> _$CartItemsToJson(CartItems instance) => <String, dynamic>{
-      'product': instance.product,
-      'quantity': instance.quantity,
+      'token': instance.token,
     };

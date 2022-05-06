@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:medicos_app/view/home/view/home_page.dart';
+import 'package:medicos_app/view/user/view/register_page.dart';
+import 'package:medicos_app/view/user/view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -48,7 +52,19 @@ class _LoginViewState extends State<LoginView> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CustomFabButton(text: LocaleKeys.login_logIn.locale),
+                    CustomFabButton(
+                        text: LocaleKeys.login_logIn.locale,
+                        onTap: () async {
+                          final response = await context
+                              .read<UserViewModel>()
+                              .userLogin(_emailController.text,
+                                  _passwordController.text);
+
+                          if (response) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                          }
+                        }),
                     SizedBox(height: context.lowValue),
                     AuthRichText(
                         textOne: LocaleKeys.login_forgotPassword.locale,
@@ -56,7 +72,11 @@ class _LoginViewState extends State<LoginView> {
                     SizedBox(height: context.lowValue),
                     AuthRichText(
                         textOne: LocaleKeys.login_dontHaveAnAccount.locale,
-                        textTwo: LocaleKeys.login_createAccount.locale),
+                        textTwo: LocaleKeys.login_createAccount.locale,
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const RegisterView()));
+                        }),
                     SizedBox(height: context.mediumValue),
                     _orLoginWith,
                     SizedBox(height: context.normalValue * 1.6),

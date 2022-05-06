@@ -24,6 +24,8 @@
     "patient": "Patient",
     "ratings": "Ratings",
     "star": "{} star",
+    "about": "About",
+    "doctorNotFound": "{} specialist could not be found..",
     "cart": {
         "shoppingCart": "Shopping Cart",
         "order": "Order",
@@ -60,7 +62,11 @@
         "done": "Done",
         "oldPassword": "Old Password",
         "newPassword": "New Password",
-        "confirmPassword": "Confirm Password"
+        "confirmPassword": "Confirm Password",
+        "oldPasswordValidate": "You entered your current password incorrectly!",
+        "newPasswordValidate": "The new password must be at least 3 characters!",
+        "confirmPasswordValidate": "Password don't match!",
+        "profileUpdatedMessage": "Profile updated successfully"
     },
     "doctorAppointment": {
         "appointment": "Appointment",

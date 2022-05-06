@@ -1,23 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:medicos_app/product/widgets/container/shop_cart_item.dart';
+import 'package:medicos_app/view/user/view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
-import '../../../core/widgets/rating_bar/rating_bar.dart';
 import '../../../product/widgets/button/custom_fab_button.dart';
 import '../../../product/widgets/row/back_arrow_app_bar.dart';
+import 'confirm_order.dart';
 import 'shipping_detail_page.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
 
-  final String _trashIconName = 'trash';
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      Provider.of<UserViewModel>(context, listen: false).getCart();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton:
-          CustomFabButton(text: LocaleKeys.cart_checkOut.locale),
+          cartControl ? _fabButton(context) : const SizedBox(),
       body: Column(
         children: [
           Expanded(
@@ -34,104 +48,48 @@ class CartPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: context.normalValue),
-          _productDetailContent(context)
+          cartControl ? _productDetailContent(context) : const SizedBox()
         ],
       ),
     );
   }
 
-  ListView _cartListView(BuildContext context) {
-    return ListView.builder(
-        padding: EdgeInsets.symmetric(
-            vertical: context.lowValue, horizontal: context.lowValue),
-        shrinkWrap: true,
-        itemCount: 5,
-        itemBuilder: ((context, index) => _shopCartItem(context)));
+  CustomFabButton _fabButton(BuildContext context) {
+    return CustomFabButton(
+        text: LocaleKeys.cart_checkOut.locale,
+        onTap: () async {
+          final response = await context.read<UserViewModel>().addOrder();
+          response
+              ? Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const ConfirmOrder()))
+              : null;
+        });
   }
 
-  Container _shopCartItem(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(context.lowValue * 1.5),
-      height: context.height * 0.14,
-      margin: EdgeInsets.only(top: context.normalValue),
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(blurRadius: 1, color: context.theme.colorScheme.surface)
-          ],
-          color: context.theme.colorScheme.onSecondary,
-          borderRadius: BorderRadius.circular(context.normalValue)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(flex: 2, child: Image.asset('BP_Meter_detail'.toImagePng)),
-          Expanded(flex: 4, child: _cartItemInfo(context))
-        ],
-      ),
-    );
-  }
+  bool get cartControl => (context.watch<UserViewModel>().cart != null &&
+          context.watch<UserViewModel>().cart!.isNotEmpty)
+      ? true
+      : false;
 
-  Padding _cartItemInfo(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: context.normalValue * 1.5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          _nameAndTrashButton(context),
-          const SizedBox(height: 3),
-          CustomRatingBar(
-              initializeRating: 3, itemSize: context.lowValue * 1.5),
-          const SizedBox(height: 3),
-          Text('\$ 98',
-              style: context.textTheme.subtitle2!.copyWith(fontSize: 12)),
-          const Spacer(),
-          _incrementAndDecrementRow(context)
-        ],
-      ),
-    );
-  }
-
-  Align _incrementAndDecrementRow(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomRight,
-      child: Wrap(
-        crossAxisAlignment: WrapCrossAlignment.center,
-        spacing: context.lowValue,
-        children: [
-          _incrementDecrementButton(
-              context, Icons.remove_circle_outline_rounded,
-              onTap: () {}),
-          Text('2', style: context.textTheme.subtitle2!.copyWith(fontSize: 12)),
-          _incrementDecrementButton(context, Icons.add_circle_outline,
-              onTap: () {}),
-        ],
-      ),
-    );
-  }
-
-  GestureDetector _incrementDecrementButton(BuildContext context, IconData icon,
-      {void Function()? onTap}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Icon(icon,
-          color: context.theme.colorScheme.background,
-          size: context.normalValue * 1.1),
-    );
-  }
-
-  Row _nameAndTrashButton(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text('BP Meter',
-            style: context.textTheme.subtitle2!.copyWith(fontSize: 14)),
-        Image.asset(_trashIconName.toIconPng,
-            fit: BoxFit.fill, height: context.normalValue * 1.2)
-      ],
-    );
+  Widget _cartListView(BuildContext context) {
+    return cartControl
+        ? ListView.builder(
+            padding: EdgeInsets.symmetric(
+                vertical: context.lowValue, horizontal: context.lowValue),
+            shrinkWrap: true,
+            itemCount: context.watch<UserViewModel>().cart!.length,
+            itemBuilder: ((context, index) =>
+                ShopCartItem(item: context.read<UserViewModel>().cart![index])))
+        : Center(
+            child: Text('Cart is Empty',
+                style: context.textTheme.headline4!.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: context.theme.colorScheme.primary)));
   }
 
   Container _productDetailContent(BuildContext context) {
+    final _userProvider = Provider.of<UserViewModel>(context);
+
     return Container(
       height: context.height * 0.4,
       padding: EdgeInsets.only(
@@ -148,16 +106,20 @@ class CartPage extends StatelessWidget {
               topRight: Radius.circular(context.mediumValue))),
       child: Column(
         children: [
-          _itemPriceInfoText(context, LocaleKeys.cart_order.locale, '\$ 190'),
+          _itemPriceInfoText(context, LocaleKeys.cart_order.locale,
+              _userProvider.order.toStringAsFixed(2).dolarPrice),
           SizedBox(height: context.normalValue),
-          _itemPriceInfoText(context, LocaleKeys.cart_delivery.locale, '\$ 50'),
-          SizedBox(height: context.normalValue),
-          _itemPriceInfoText(context, LocaleKeys.cart_tax.locale, '2%'),
-          SizedBox(height: context.normalValue),
-          _itemPriceInfoText(context, LocaleKeys.cart_discount.locale, '3%'),
+          _itemPriceInfoText(context, LocaleKeys.cart_delivery.locale,
+              '${_userProvider.delivery}'.dolarPrice),
           SizedBox(height: context.normalValue),
           _itemPriceInfoText(
-              context, LocaleKeys.cart_totalBill.locale, '\$ 255'),
+              context, LocaleKeys.cart_tax.locale, '${_userProvider.tax}%'),
+          SizedBox(height: context.normalValue),
+          _itemPriceInfoText(context, LocaleKeys.cart_discount.locale,
+              '${_userProvider.discount}%'),
+          SizedBox(height: context.normalValue),
+          _itemPriceInfoText(context, LocaleKeys.cart_totalBill.locale,
+              _userProvider.totalPrice.toStringAsFixed(2).dolarPrice),
           SizedBox(height: context.normalValue),
           Align(
             alignment: Alignment.bottomRight,

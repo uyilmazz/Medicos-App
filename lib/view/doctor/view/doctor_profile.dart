@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicos_app/core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
@@ -12,8 +13,8 @@ class DoctorProfile extends StatelessWidget {
 
   final Doctor doctor;
   final String _profileImage = 'doctor_profile';
-  final String _aboutText =
-      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. RELIT official consequent door enim velit mollit. Exercitation veniam consequat sunt nostrud amet.';
+  final String _availableHours = '02:00 am - 10:00 am';
+  final String _availableDay = 'Monday till Friday';
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +55,14 @@ class DoctorProfile extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: context.height * 0.04),
-          Text(doctor.name != null ? 'Dr. ${doctor.name}' : '',
+          Text(doctor.name != null ? doctor.name!.doctorName : '',
               style: context.textTheme.headline5!.copyWith(
                   color: context.theme.colorScheme.primary,
                   fontWeight: FontWeight.w600)),
           SizedBox(height: context.lowValue),
           Text(
               LocaleKeys.specialist
-                  .paramLocale([(doctor.specialist ?? '').toString()]),
+                  .paramLocale([(doctor.department?.name ?? '').toString()]),
               style: context.textTheme.headline6!
                   .copyWith(fontWeight: FontWeight.w600)),
           SizedBox(height: context.lowValue),
@@ -81,11 +82,11 @@ class DoctorProfile extends StatelessWidget {
           SizedBox(height: context.normalValue),
           Align(
               alignment: Alignment.centerLeft,
-              child: Text('About',
+              child: Text(LocaleKeys.about.locale,
                   style: context.textTheme.headline5!
                       .copyWith(fontWeight: FontWeight.w600))),
           SizedBox(height: context.lowValue * 1.5),
-          Text(_aboutText,
+          Text(doctor.about ?? '',
               style: context.textTheme.subtitle2!.copyWith(
                   fontSize: 15,
                   color: context.theme.colorScheme.onSurface.withAlpha(180),
@@ -94,16 +95,20 @@ class DoctorProfile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _patientExperienceRateItem(context, LocaleKeys.patient, '1.8k'),
-              _patientExperienceRateItem(context, LocaleKeys.experience,
-                  '${doctor.experience} ${LocaleKeys.years.locale}'),
+              _patientExperienceRateItem(context, LocaleKeys.patient,
+                  (doctor.patience ?? 0).toString()),
+              _patientExperienceRateItem(
+                  context,
+                  LocaleKeys.experience,
+                  LocaleKeys.years
+                      .paramLocale([(doctor.experience ?? 0).toString()])),
               _patientExperienceRateItem(context, LocaleKeys.ratings,
                   LocaleKeys.star.paramLocale([doctor.rate.toString()])),
             ],
           ),
           SizedBox(height: context.normalValue),
           _availableClocksWrap(context),
-          Text('Monday till Friday',
+          Text(_availableDay,
               style: context.textTheme.headline2!.copyWith(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
@@ -121,7 +126,7 @@ class DoctorProfile extends StatelessWidget {
         Icon(Icons.history,
             size: context.normalValue * 1.5,
             color: context.theme.colorScheme.background.withAlpha(200)),
-        Text('02:00 am - 10:00 am',
+        Text(_availableHours,
             style: context.textTheme.headline2!.copyWith(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
@@ -167,9 +172,15 @@ class DoctorProfile extends StatelessWidget {
   Positioned _profileAvatar(BuildContext context) {
     return Positioned(
       left: context.width * 0.23,
-      child: CircleAvatar(
-          radius: context.height * 0.1,
-          backgroundImage: AssetImage(_profileImage.toImagePng)),
+      child: doctor.profilUrl != null
+          ? CircleAvatar(
+              backgroundColor: Colors.transparent,
+              radius: context.height * 0.1,
+              backgroundImage: NetworkImage(doctor.profilUrl!.networkUrl))
+          : CircleAvatar(
+              radius: context.height * 0.1,
+              backgroundImage:
+                  AssetImage(ImageConstants.instance.profileImage.toImagePng)),
     );
   }
 }
