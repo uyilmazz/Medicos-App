@@ -1,6 +1,8 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:medicos_app/view/doctor/model/appointment.dart';
 import 'package:medicos_app/view/doctor/service/IDoctor_service.dart';
 
 import '../model/doctor.dart';
@@ -36,14 +38,38 @@ class DoctorService extends IDoctorService {
     return null;
   }
 
-  // @override
-  // Future<List<Doctor>?> getDoctorsBySearchText(String searchText) async {
-  //   try {
-  //     // final response = await dio.get('doctors',)
+  @override
+  Future<List<Appointment>?> getAppointment(
+      {bool? isSelected, String? date, String? doctorId}) async {
+    try {
+      final response = await dio.get('/appointments', queryParameters: {
+        "date": date,
+        "doctorId": doctorId,
+        "isSelected": isSelected
+      });
+      if (response.statusCode == HttpStatus.ok) {
+        final responseListData = List.castFrom(response.data);
+        return responseListData
+            .map((data) => Appointment.fromJson(data))
+            .toList();
+      }
+    } catch (e) {
+      return null;
+    }
+    return null;
+  }
 
-  //   } catch (e) {
-  //     return null;
-  //   }
-  //   return null;
-  // }
+  @override
+  Future<bool> makeAppointment({String? userId, String? appointmentId}) async {
+    try {
+      final response = await dio.post('/appointments/makeAppointment',
+          data: {"appointmentId": appointmentId, "userId": userId});
+      if (response.statusCode == HttpStatus.ok) {
+        return true;
+      }
+    } catch (e) {
+      return false;
+    }
+    return false;
+  }
 }

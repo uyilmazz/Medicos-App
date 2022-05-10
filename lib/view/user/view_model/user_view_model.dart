@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medicos_app/core/init/cache/local_cache_manager.dart';
+import 'package:medicos_app/view/doctor/model/appointment.dart';
 import 'package:medicos_app/view/pharmacy/model/order.dart';
 import 'package:medicos_app/view/user/model/user_cart.dart';
 import 'package:medicos_app/view/user/service/IAuth_service.dart';
@@ -15,6 +16,7 @@ class UserViewModel extends ChangeNotifier {
   final LocalCacheManager _localCacheManager = LocalCacheManager.instance;
 
   bool isUpcoming = true;
+  List<Appointment> userAppointment = [];
 
   List<CartItem>? cart;
   double totalPrice = 0;
@@ -33,6 +35,7 @@ class UserViewModel extends ChangeNotifier {
 
   void changeAppointment(bool value) {
     isUpcoming = value;
+    getAppointmentByUserId();
     notifyListeners();
   }
 
@@ -183,5 +186,16 @@ class UserViewModel extends ChangeNotifier {
     String total = _totalPrice.toStringAsFixed(3);
     totalPrice = double.parse(total);
     notifyListeners();
+  }
+
+  Future<void> getAppointmentByUserId() async {
+    final response = await _authService.getAppointmentByUserId(
+        userId: user?.sId ?? '', isUpComing: isUpcoming);
+    userAppointment = response ?? [];
+    notifyListeners();
+  }
+
+  Future<bool> cancelAppointment(String appointmentId) async {
+    return _authService.cancelAppointment(appointmentId);
   }
 }

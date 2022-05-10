@@ -55,6 +55,9 @@ class HomePage extends StatelessWidget {
                     showUnselectedLabels: false,
                     selectedFontSize: 0,
                     onTap: (index) {
+                      if (index == 3) {
+                        _showBottomSheet(context);
+                      }
                       homeViewModel.changeBottomNavigationItem(index);
                     },
                     currentIndex: homeViewModel.bottomNavigationBarIndex,
@@ -67,6 +70,13 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ));
+
+  Future<dynamic> _showBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+        useRootNavigator: true,
+        context: context,
+        builder: (context) => Container(color: Colors.red));
+  }
 
   BottomNavigationBarItem _bottomNavBarItem(HomeViewModel homeViewModel,
       BuildContext context, String name, int index) {

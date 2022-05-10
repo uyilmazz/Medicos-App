@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:medicos_app/view/doctor/model/appointment.dart';
 import 'package:medicos_app/view/user/model/user.dart';
 import 'package:medicos_app/view/user/service/IAuth_service.dart';
 
@@ -100,5 +101,35 @@ class AuthService extends IAuthService {
       return null;
     }
     return null;
+  }
+
+  @override
+  Future<List<Appointment>?> getAppointmentByUserId(
+      {String? userId, bool isUpComing = true}) async {
+    try {
+      final response = await dio.get('/users/appointments/$userId',
+          queryParameters: {"isUpComing": isUpComing});
+      if (response.statusCode == HttpStatus.ok) {
+        final dataList = List.castFrom(response.data);
+        return dataList.map((data) => Appointment.fromJson(data)).toList();
+      }
+    } catch (e) {
+      return null;
+    }
+    return null;
+  }
+
+  @override
+  Future<bool> cancelAppointment(String appointmentId) async {
+    try {
+      final response = await dio.get('/appointments/cancelAppointment',
+          queryParameters: {'appointmentId': appointmentId});
+      if (response.statusCode == HttpStatus.ok) {
+        return true;
+      }
+    } catch (e) {
+      return false;
+    }
+    return false;
   }
 }

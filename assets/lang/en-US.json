@@ -82,7 +82,9 @@
         "myAppointments": "My Appointments",
         "upcoming": "Upcoming",
         "past": "Past",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "cancelNotAppointmentMessage": "The appointment could not be cancelled.",
+        "cancelAppointmentMessage": "The appointment has been cancelled."
     },
     "login": {
         "welcomeBack": "Welcome Back!",

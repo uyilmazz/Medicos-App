@@ -116,7 +116,11 @@ class DoctorView extends StatelessWidget {
     return item.profilUrl != null
         ? CircleAvatar(
             radius: context.normalValue * 1.3,
-            child: Image.network(item.profilUrl!.networkUrl, fit: BoxFit.fill))
+            child: Image.network(item.profilUrl!.networkUrl,
+                fit: BoxFit.fill,
+                errorBuilder: (context, error, stackTrace) => Image.asset(
+                    ImageConstants.instance.profileImage.toImagePng,
+                    fit: BoxFit.fill)))
         : CircleAvatar(
             radius: context.normalValue * 1.3,
             child: Image.asset(

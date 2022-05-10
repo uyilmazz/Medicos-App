@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medicos_app/core/constants/image_constant.dart';
+import 'package:medicos_app/view/doctor/view/doctor_appointment.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
@@ -22,7 +23,14 @@ class DoctorProfile extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
           margin: EdgeInsets.only(bottom: context.height * 0.04),
-          child: CustomFabButton(text: LocaleKeys.getAppointment.locale)),
+          child: CustomFabButton(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => DoctorAppointmentView(
+                          doctor: doctor,
+                        )));
+              },
+              text: LocaleKeys.getAppointment.locale)),
       body: Padding(
         padding: context.appPadding,
         child: Column(

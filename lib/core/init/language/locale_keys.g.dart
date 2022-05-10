@@ -79,6 +79,8 @@ abstract class  LocaleKeys {
   static const userAppointment_upcoming = 'userAppointment.upcoming';
   static const userAppointment_past = 'userAppointment.past';
   static const userAppointment_cancel = 'userAppointment.cancel';
+  static const userAppointment_cancelNotAppointmentMessage = 'userAppointment.cancelNotAppointmentMessage';
+  static const userAppointment_cancelAppointmentMessage = 'userAppointment.cancelAppointmentMessage';
   static const userAppointment = 'userAppointment';
   static const login_welcomeBack = 'login.welcomeBack';
   static const login_password = 'login.password';

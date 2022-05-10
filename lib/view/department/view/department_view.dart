@@ -12,6 +12,7 @@ import '../../../product/widgets/container/home_page_item.dart';
 import '../../../product/widgets/row/head_text_see_all.dart';
 import '../../../product/widgets/row/home_app.dart';
 import '../../../product/widgets/stack/search_box.dart';
+import '../../user/view/user_appointment.dart';
 import '../../user/view_model/user_view_model.dart';
 import '../model/department.dart';
 
@@ -37,8 +38,10 @@ class DepartmentPage extends StatelessWidget {
                               ?.imageUrl
                               ?.networkUrl,
                           onTap: () {
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //     builder: (context) => const UserProfile()));
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const UserProfile()));
+                                builder: (context) => const UserAppointment()));
                           }),
                       const SearchBox(),
                       SizedBox(height: context.normalValue),

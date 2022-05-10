@@ -82,7 +82,9 @@
         "myAppointments": "Randevularım",
         "upcoming": "Yaklaşan",
         "past": "Geçmiş",
-        "cancel": "İptal Et"
+        "cancel": "İptal Et",
+        "cancelNotAppointmentMessage": "Randevu iptal edilemedi.",
+        "cancelAppointmentMessage": "Randevu iptal edildi."
     },
     "login": {
         "welcomeBack": "Tekrar Hoşgeldiniz!",
