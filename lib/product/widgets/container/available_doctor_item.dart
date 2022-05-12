@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:medicos_app/core/constants/image_constant.dart';
-import 'package:medicos_app/view/doctor/view/doctor_profile.dart';
+import '../../../core/constants/image_constant.dart';
+import '../../../view/doctor/view/doctor_profile.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';

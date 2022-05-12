@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/view/home/view/home_page.dart';
-import 'package:medicos_app/view/user/view/register_page.dart';
-import 'package:medicos_app/view/user/view_model/user_view_model.dart';
+import 'package:medicos_app/view/user/view/forgot_password_page.dart';
+import '../../home/view/home_page.dart';
+import 'register_page.dart';
+import '../view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
@@ -67,6 +68,11 @@ class _LoginViewState extends State<LoginView> {
                         }),
                     SizedBox(height: context.lowValue),
                     AuthRichText(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  const ForgotPasswordPage()));
+                        },
                         textOne: LocaleKeys.login_forgotPassword.locale,
                         textTwo: LocaleKeys.login_reset.locale),
                     SizedBox(height: context.lowValue),

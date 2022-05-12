@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/view/doctor/view/doctor_view.dart';
+import '../../../view/doctor/view/doctor_view.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 import '../../../core/extensions/context_extension.dart';

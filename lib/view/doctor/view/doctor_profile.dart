@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/constants/image_constant.dart';
-import 'package:medicos_app/view/doctor/view/doctor_appointment.dart';
+import '../../../core/constants/image_constant.dart';
+import 'doctor_appointment.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
@@ -13,7 +13,6 @@ class DoctorProfile extends StatelessWidget {
   const DoctorProfile({Key? key, required this.doctor}) : super(key: key);
 
   final Doctor doctor;
-  final String _profileImage = 'doctor_profile';
   final String _availableHours = '02:00 am - 10:00 am';
   final String _availableDay = 'Monday till Friday';
 

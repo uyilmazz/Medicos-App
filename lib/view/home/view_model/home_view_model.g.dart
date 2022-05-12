@@ -26,22 +26,6 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
-  final _$getAllDepartmentsAtom =
-      Atom(name: '_HomeViewModelBase.getAllDepartments');
-
-  @override
-  List<Department>? get getAllDepartments {
-    _$getAllDepartmentsAtom.reportRead();
-    return super.getAllDepartments;
-  }
-
-  @override
-  set getAllDepartments(List<Department>? value) {
-    _$getAllDepartmentsAtom.reportWrite(value, super.getAllDepartments, () {
-      super.getAllDepartments = value;
-    });
-  }
-
   final _$isOpenSettingAtom = Atom(name: '_HomeViewModelBase.isOpenSetting');
 
   @override
@@ -83,10 +67,20 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
   }
 
   @override
+  void showBottomSheetClose() {
+    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
+        name: '_HomeViewModelBase.showBottomSheetClose');
+    try {
+      return super.showBottomSheetClose();
+    } finally {
+      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 bottomNavigationBarIndex: ${bottomNavigationBarIndex},
-getAllDepartments: ${getAllDepartments},
 isOpenSetting: ${isOpenSetting}
     ''';
   }

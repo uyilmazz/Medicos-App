@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:medicos_app/core/constants/image_constant.dart';
-import 'package:medicos_app/view/doctor/model/appointment.dart';
-import 'package:medicos_app/view/doctor/view_model/doctor_view_model.dart';
-import 'package:medicos_app/view/home/view/home_page.dart';
-import 'package:medicos_app/view/user/view_model/user_view_model.dart';
+import '../../../core/constants/image_constant.dart';
+import '../../../view/doctor/model/appointment.dart';
+import '../../../view/doctor/view_model/doctor_view_model.dart';
+import '../../../view/home/view/home_page.dart';
+import '../../../view/user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';

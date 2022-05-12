@@ -1,9 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:medicos_app/view/pharmacy/model/order.dart';
-import 'package:medicos_app/view/pharmacy/service/IPharmacy_service.dart';
-import 'package:medicos_app/view/pharmacy/service/pharmacy_service.dart';
-import 'package:medicos_app/view/user/service/ICart_service.dart';
-import 'package:medicos_app/view/user/service/cart_service.dart';
+import '../service/IPharmacy_service.dart';
+import '../service/pharmacy_service.dart';
 import 'package:mobx/mobx.dart';
 import '../../../core/base/view_model/base_view_model.dart';
 import '../model/pharmacy.dart';
@@ -14,8 +10,6 @@ part 'pharmacy_view_model.g.dart';
 class PharmacyViewModel = _PharmacyViewModelBase with _$PharmacyViewModel;
 
 abstract class _PharmacyViewModelBase with Store, BaseViewModel {
-  late BuildContext context;
-
   final IPharmacyService _pharmacyService = PharmacyService.instance;
 
   @observable
@@ -29,11 +23,6 @@ abstract class _PharmacyViewModelBase with Store, BaseViewModel {
 
   @observable
   int pageBuilderIndex = 0;
-
-  @override
-  void setContext(BuildContext context) {
-    context = context;
-  }
 
   @override
   Future<void> init() async {

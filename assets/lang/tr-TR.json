@@ -121,5 +121,6 @@
         "wantAnOnlineDoctor": "Çevrimiçi bir doktor tavsiyesi ister misiniz?",
         "sliderDesc": "Binlerce güvenilir hekim anında erişiyor",
         "next": "Sonraki"
-    }
+    },
+    "logout": "Çıkış"
 }

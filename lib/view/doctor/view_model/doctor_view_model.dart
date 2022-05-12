@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:medicos_app/view/doctor/model/appointment.dart';
-import 'package:medicos_app/view/doctor/service/IDoctor_service.dart';
-import 'package:medicos_app/view/doctor/service/doctor_service.dart';
+import '../model/appointment.dart';
+import '../service/IDoctor_service.dart';
+import '../service/doctor_service.dart';
 import 'package:mobx/mobx.dart';
 import '../../../core/base/view_model/base_view_model.dart';
 import '../model/doctor.dart';
@@ -11,14 +10,7 @@ part 'doctor_view_model.g.dart';
 class DoctorViewModel = _DoctorViewModelBase with _$DoctorViewModel;
 
 abstract class _DoctorViewModelBase with Store, BaseViewModel {
-  late BuildContext context;
-
   final IDoctorService _doctorService = DoctorService.instance;
-
-  @override
-  void setContext(BuildContext context) {
-    this.context = context;
-  }
 
   int appointmentDayLenght = 7;
 
@@ -110,7 +102,6 @@ abstract class _DoctorViewModelBase with Store, BaseViewModel {
       morningSelectedItemIndex = -1;
       afternoonSelectedItemIndex = -1;
     }
-    print(index);
   }
 
   @action

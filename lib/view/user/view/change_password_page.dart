@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/view/user/view/login_page.dart';
-import 'package:medicos_app/view/user/view_model/user_view_model.dart';
+import 'login_page.dart';
+import '../view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';

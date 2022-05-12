@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:medicos_app/core/constants/image_constant.dart';
+import '../../../core/constants/image_constant.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -26,7 +26,6 @@ class DoctorView extends StatelessWidget {
     return BaseView<DoctorViewModel>(
         viewModel: DoctorViewModel(),
         onModelReady: (model) {
-          model.setContext(context);
           model.getDoctors(
               departmentId: department?.sId, searchText: searchText);
         },

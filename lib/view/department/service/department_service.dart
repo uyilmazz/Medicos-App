@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:medicos_app/view/department/service/IDepartment_service.dart';
-
+import 'IDepartment_service.dart';
 import '../model/department.dart';
 
 class DepartmentService extends IDepartmentService {

@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:medicos_app/view/doctor/model/appointment.dart';
-import 'package:medicos_app/view/user/model/user.dart';
-import 'package:medicos_app/view/user/service/IAuth_service.dart';
+import '../../doctor/model/appointment.dart';
+import '../model/user.dart';
+import 'IAuth_service.dart';
 
 class AuthService extends IAuthService {
   static AuthService? _instance;

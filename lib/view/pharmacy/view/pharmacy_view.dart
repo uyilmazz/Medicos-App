@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
-import '../../../core/extensions/string_extension.dart';
-import '../../../product/widgets/row/home_app.dart';
-import '../../../product/widgets/textField/search_text_field.dart';
-import '../../home/model/medicine_model.dart';
-import '../view_model/pharmacy_view_model.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 import '../../../product/widgets/container/home_page_item.dart';
 import '../../../product/widgets/container/product_item.dart';
 import '../../../product/widgets/row/head_text_see_all.dart';
+import '../../../product/widgets/row/home_app.dart';
+import '../../../product/widgets/textField/search_text_field.dart';
+import '../../home/model/medicine_model.dart';
+import '../../user/view_model/user_view_model.dart';
+import '../view_model/pharmacy_view_model.dart';
 
 class PharmacyView extends StatelessWidget {
   const PharmacyView({Key? key}) : super(key: key);
@@ -22,7 +21,6 @@ class PharmacyView extends StatelessWidget {
     return BaseView<PharmacyViewModel>(
         viewModel: PharmacyViewModel(),
         onModelReady: (model) {
-          model.setContext(context);
           model.init();
         },
         onPageBuilder: (context, viewModel) => Observer(

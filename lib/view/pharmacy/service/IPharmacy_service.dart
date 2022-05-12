@@ -1,5 +1,4 @@
-import 'package:medicos_app/view/pharmacy/model/product.dart';
-
+import '../model/product.dart';
 import '../model/pharmacy.dart';
 
 abstract class IPharmacyService {

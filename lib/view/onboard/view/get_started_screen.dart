@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/base/view/base_widget.dart';
-import 'package:medicos_app/view/onboard/view_model/onboard_view_model.dart';
+import '../../../core/base/view/base_widget.dart';
+import '../view_model/onboard_view_model.dart';
 import '../../../core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';

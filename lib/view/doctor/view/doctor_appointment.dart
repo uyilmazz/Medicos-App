@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:medicos_app/core/base/view/base_widget.dart';
-import 'package:medicos_app/view/doctor/view_model/doctor_view_model.dart';
+import '../../../core/base/view/base_widget.dart';
+import '../view_model/doctor_view_model.dart';
 import '../../../core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';

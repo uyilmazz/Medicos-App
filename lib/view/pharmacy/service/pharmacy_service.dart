@@ -1,7 +1,6 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:medicos_app/view/pharmacy/model/product.dart';
+import '../model/product.dart';
 import '../model/pharmacy.dart';
 import 'IPharmacy_service.dart';
 

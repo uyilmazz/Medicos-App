@@ -1,10 +1,7 @@
-import 'dart:ffi';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:medicos_app/view/doctor/model/appointment.dart';
-import 'package:medicos_app/view/doctor/service/IDoctor_service.dart';
-
+import '../model/appointment.dart';
+import 'IDoctor_service.dart';
 import '../model/doctor.dart';
 
 class DoctorService extends IDoctorService {

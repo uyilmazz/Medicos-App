@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:medicos_app/view/department/model/department.dart';
+import '../../department/model/department.dart';
 
 part 'doctor.g.dart';
 

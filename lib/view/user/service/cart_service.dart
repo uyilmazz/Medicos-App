@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:medicos_app/view/user/model/user_cart.dart';
-import 'package:medicos_app/view/user/service/ICart_service.dart';
-
+import '../model/user_cart.dart';
+import 'ICart_service.dart';
 import '../../pharmacy/model/order.dart';
 
 class CartService extends ICartService {

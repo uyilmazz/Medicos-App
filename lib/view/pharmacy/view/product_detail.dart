@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:medicos_app/view/user/view_model/user_view_model.dart';
+import '../../../core/constants/image_constant.dart';
+import '../../user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
@@ -83,8 +84,17 @@ class ProductDetail extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           horizontal: context.mediumValue * 2,
                           vertical: context.normalValue * 1.2),
-                      child: Image.asset(product.imageUrl!.toImagePng,
-                          fit: BoxFit.fill));
+                      child: product.imageUrl != null
+                          ? Image.network(product.imageUrl!.networkUrl,
+                              errorBuilder: ((context, error, stackTrace) =>
+                                  Image.asset(
+                                      ImageConstants
+                                          .instance.imageNotFound.toImagePng,
+                                      fit: BoxFit.fill)),
+                              fit: BoxFit.fill)
+                          : Image.asset(
+                              ImageConstants.instance.imageNotFound.toImagePng,
+                              fit: BoxFit.fill));
                 })
             : const SizedBox());
   }

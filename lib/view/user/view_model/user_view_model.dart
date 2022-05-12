@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/init/cache/local_cache_manager.dart';
-import 'package:medicos_app/view/doctor/model/appointment.dart';
-import 'package:medicos_app/view/pharmacy/model/order.dart';
-import 'package:medicos_app/view/user/model/user_cart.dart';
-import 'package:medicos_app/view/user/service/IAuth_service.dart';
-import 'package:medicos_app/view/user/service/ICart_service.dart';
-import 'package:medicos_app/view/user/service/cart_service.dart';
+import '../../../core/init/cache/local_cache_manager.dart';
+import '../../doctor/model/appointment.dart';
+import '../../pharmacy/model/order.dart';
+import '../model/user_cart.dart';
+import '../service/IAuth_service.dart';
+import '../service/ICart_service.dart';
+import '../service/cart_service.dart';
 import '../model/user.dart';
 import '../service/auth_service.dart';
 

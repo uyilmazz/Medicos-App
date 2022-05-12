@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:medicos_app/core/init/cache/local_cache_manager.dart';
+import '../../../core/init/cache/local_cache_manager.dart';
 import '../../../core/base/view_model/base_view_model.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../model/onboard_model.dart';
@@ -10,8 +9,6 @@ part 'onboard_view_model.g.dart';
 class OnboardViewModel = _OnboardViewModelBase with _$OnboardViewModel;
 
 abstract class _OnboardViewModelBase with Store, BaseViewModel {
-  late BuildContext context;
-
   @observable
   List<OnBoard>? onboardList;
 
@@ -22,11 +19,6 @@ abstract class _OnboardViewModelBase with Store, BaseViewModel {
 
   @observable
   int pageViewItemIndex = 0;
-
-  @override
-  void setContext(BuildContext context) {
-    this.context = context;
-  }
 
   @override
   void init() {

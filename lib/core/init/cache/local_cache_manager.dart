@@ -1,4 +1,4 @@
-import 'package:medicos_app/core/init/cache/ILocal_cache_manager.dart';
+import 'ILocal_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 

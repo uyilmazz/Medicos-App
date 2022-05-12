@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:medicos_app/view/doctor/model/appointment.dart';
+import '../../doctor/model/appointment.dart';
 import '../../../core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';

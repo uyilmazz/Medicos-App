@@ -1,5 +1,4 @@
-import 'package:medicos_app/view/user/model/user.dart';
-
+import '../model/user.dart';
 import '../../doctor/model/appointment.dart';
 
 abstract class IAuthService {

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-import 'package:medicos_app/view/user/model/user_cart.dart';
-import 'package:medicos_app/view/user/view_model/user_view_model.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../../view/user/model/user_cart.dart';
+import '../../../view/user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
-
 import '../../../core/widgets/rating_bar/rating_bar.dart';
 
 class ShopCartItem extends StatelessWidget {

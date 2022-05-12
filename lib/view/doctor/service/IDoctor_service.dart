@@ -1,5 +1,4 @@
-import 'package:medicos_app/view/doctor/model/doctor.dart';
-
+import '../model/doctor.dart';
 import '../model/appointment.dart';
 
 abstract class IDoctorService {
@@ -8,5 +7,4 @@ abstract class IDoctorService {
   Future<List<Appointment>?> getAppointment(
       {bool? isSelected, String? date, String? doctorId});
   Future<bool> makeAppointment({String? userId, String? appointmentId});
-  // Future<List<Doctor>?> getDoctorsBySearchText(String searchText);
 }

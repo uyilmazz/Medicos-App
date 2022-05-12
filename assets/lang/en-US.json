@@ -121,5 +121,6 @@
         "wantAnOnlineDoctor": "Want an online doctor’s advice ?",
         "sliderDesc": "Thousands of trustworthy physicians access immediately",
         "next": "Next"
-    }
+    },
+    "logout": "Logout"
 }

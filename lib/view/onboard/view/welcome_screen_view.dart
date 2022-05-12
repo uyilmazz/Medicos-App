@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:medicos_app/core/base/view/base_widget.dart';
-import 'package:medicos_app/view/home/view/home_page.dart';
-import 'package:medicos_app/view/onboard/view_model/onboard_view_model.dart';
-import 'package:medicos_app/view/user/view/login_page.dart';
-import 'package:medicos_app/view/user/view_model/user_view_model.dart';
+import '../../../core/base/view/base_widget.dart';
+import '../../home/view/home_page.dart';
+import '../view_model/onboard_view_model.dart';
+import '../../user/view/login_page.dart';
+import '../../user/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants/app_constant.dart';
 import '../../../core/constants/image_constant.dart';

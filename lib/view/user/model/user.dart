@@ -10,7 +10,6 @@ class User {
   String? email;
   String? password;
   List<String>? appointments;
-  // List<String>? cart;
   String? phoneNumber;
   String? address;
   String? imageUrl;
@@ -23,7 +22,6 @@ class User {
       this.email,
       this.password,
       this.appointments,
-      // this.cart,
       this.phoneNumber,
       this.address,
       this.imageUrl,

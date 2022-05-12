@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:medicos_app/core/base/view/base_widget.dart';
-import 'package:medicos_app/core/extensions/context_extension.dart';
-import 'package:medicos_app/core/extensions/string_extension.dart';
-import 'package:medicos_app/view/department/model/department.dart';
-import 'package:medicos_app/view/department/view_model/department_view_model.dart';
-import 'package:medicos_app/view/doctor/view/doctor_view.dart';
-import 'package:medicos_app/view/doctor/view_model/doctor_view_model.dart';
-import 'package:medicos_app/view/home/view_model/home_view_model.dart';
-import 'package:medicos_app/view/pharmacy/view_model/pharmacy_view_model.dart';
+import '../../../core/base/view/base_widget.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/extensions/string_extension.dart';
+import '../../department/model/department.dart';
+import '../../department/view_model/department_view_model.dart';
+import '../../doctor/view/doctor_view.dart';
+import '../../doctor/view_model/doctor_view_model.dart';
+import '../view_model/home_view_model.dart';
+import '../../pharmacy/view_model/pharmacy_view_model.dart';
 import 'package:provider/provider.dart';
-
 import '../../../core/init/language/locale_keys.g.dart';
 import '../../../product/widgets/container/available_doctor_item.dart';
 import '../../../product/widgets/container/home_page_item.dart';
