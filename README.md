@@ -1,6 +1,6 @@
 # Medicos-App
 https://ui8.net/genic-studios/products/medicos---ui-kit-for-hospitals-healthcare-and-pharmacy-app (ui design)
-# Supporting language [TR,EN]
+# Supported language [TR,EN]
 
 
 <p float="left">
