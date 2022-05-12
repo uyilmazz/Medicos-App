@@ -1,6 +1,8 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class  LocaleKeys {
+// ignore_for_file: constant_identifier_names
+
+abstract class LocaleKeys {
   static const welcome = 'welcome';
   static const goodMorning = 'goodMorning';
   static const search_findYour = 'search.findYour';
@@ -25,6 +27,8 @@ abstract class  LocaleKeys {
   static const patient = 'patient';
   static const ratings = 'ratings';
   static const star = 'star';
+  static const about = 'about';
+  static const doctorNotFound = 'doctorNotFound';
   static const cart_shoppingCart = 'cart.shoppingCart';
   static const cart_order = 'cart.order';
   static const cart_delivery = 'cart.delivery';
@@ -59,20 +63,35 @@ abstract class  LocaleKeys {
   static const profile_oldPassword = 'profile.oldPassword';
   static const profile_newPassword = 'profile.newPassword';
   static const profile_confirmPassword = 'profile.confirmPassword';
+  static const profile_oldPasswordValidate = 'profile.oldPasswordValidate';
+  static const profile_newPasswordValidate = 'profile.newPasswordValidate';
+  static const profile_confirmPasswordValidate =
+      'profile.confirmPasswordValidate';
+  static const profile_profileUpdatedMessage = 'profile.profileUpdatedMessage';
   static const profile = 'profile';
   static const doctorAppointment_appointment = 'doctorAppointment.appointment';
   static const doctorAppointment_schedule = 'doctorAppointment.schedule';
-  static const doctorAppointment_availableTimings = 'doctorAppointment.availableTimings';
-  static const doctorAppointment_morningSlots = 'doctorAppointment.morningSlots';
-  static const doctorAppointment_afternoonSlots = 'doctorAppointment.afternoonSlots';
-  static const doctorAppointment_eveningSlots = 'doctorAppointment.eveningSlots';
-  static const doctorAppointment_bookAppointment = 'doctorAppointment.bookAppointment';
+  static const doctorAppointment_availableTimings =
+      'doctorAppointment.availableTimings';
+  static const doctorAppointment_morningSlots =
+      'doctorAppointment.morningSlots';
+  static const doctorAppointment_afternoonSlots =
+      'doctorAppointment.afternoonSlots';
+  static const doctorAppointment_eveningSlots =
+      'doctorAppointment.eveningSlots';
+  static const doctorAppointment_bookAppointment =
+      'doctorAppointment.bookAppointment';
   static const doctorAppointment_confirm = 'doctorAppointment.confirm';
   static const doctorAppointment = 'doctorAppointment';
-  static const userAppointment_myAppointments = 'userAppointment.myAppointments';
+  static const userAppointment_myAppointments =
+      'userAppointment.myAppointments';
   static const userAppointment_upcoming = 'userAppointment.upcoming';
   static const userAppointment_past = 'userAppointment.past';
   static const userAppointment_cancel = 'userAppointment.cancel';
+  static const userAppointment_cancelNotAppointmentMessage =
+      'userAppointment.cancelNotAppointmentMessage';
+  static const userAppointment_cancelAppointmentMessage =
+      'userAppointment.cancelAppointmentMessage';
   static const userAppointment = 'userAppointment';
   static const login_welcomeBack = 'login.welcomeBack';
   static const login_password = 'login.password';
@@ -100,11 +119,14 @@ abstract class  LocaleKeys {
   static const welcomeScreen_welcomeDesc = 'welcomeScreen.welcomeDesc';
   static const welcomeScreen_welcomeTo = 'welcomeScreen.welcomeTo';
   static const welcomeScreen = 'welcomeScreen';
-  static const startedSlider_lookingForaDoctor = 'startedSlider.lookingForaDoctor';
-  static const startedSlider_wantaDoctorAppointment = 'startedSlider.wantaDoctorAppointment';
-  static const startedSlider_wantAnOnlineDoctor = 'startedSlider.wantAnOnlineDoctor';
+  static const startedSlider_lookingForaDoctor =
+      'startedSlider.lookingForaDoctor';
+  static const startedSlider_wantaDoctorAppointment =
+      'startedSlider.wantaDoctorAppointment';
+  static const startedSlider_wantAnOnlineDoctor =
+      'startedSlider.wantAnOnlineDoctor';
   static const startedSlider_sliderDesc = 'startedSlider.sliderDesc';
   static const startedSlider_next = 'startedSlider.next';
   static const startedSlider = 'startedSlider';
-
+  static const logout = 'logout';
 }

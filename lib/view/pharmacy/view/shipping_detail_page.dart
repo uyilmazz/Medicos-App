@@ -17,12 +17,7 @@ class ShippingDetail extends StatelessWidget {
 
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: CustomFabButton(
-          text: LocaleKeys.submit.locale,
-          onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const ConfirmOrder()));
-          }),
+      floatingActionButton: _fabButton(context, provider),
       body: Padding(
         padding: context.appPadding,
         child: Column(
@@ -30,22 +25,35 @@ class ShippingDetail extends StatelessWidget {
           children: [
             BackArrowAppBar(centerText: LocaleKeys.cart_shippingDetails.locale),
             SizedBox(height: context.height * 0.07),
-            _formItem(context, LocaleKeys.profile_name, provider.fakeUser.name,
+            _formItem(
+                context, LocaleKeys.profile_name, provider.user?.name ?? '',
                 maxLines: 2),
             _formItem(
-                context, LocaleKeys.profile_email, provider.fakeUser.email,
+                context, LocaleKeys.profile_email, provider.user?.email ?? '',
                 maxLines: 2),
             _formItem(context, LocaleKeys.profile_phoneNumber,
-                provider.fakeUser.phoneNumber),
-            _formItem(
-                context, LocaleKeys.profile_address, provider.fakeUser.address,
+                provider.user?.phoneNumber ?? ''),
+            _formItem(context, LocaleKeys.profile_address,
+                provider.user?.address ?? '',
                 maxLines: 4),
             _formItem(context, LocaleKeys.profile_zipCode,
-                provider.fakeUser.zipCode.toString()),
+                '${provider.user?.zipCode ?? ''}'),
           ],
         ),
       ),
     );
+  }
+
+  CustomFabButton _fabButton(BuildContext context, UserViewModel provider) {
+    return CustomFabButton(
+        text: LocaleKeys.submit.locale,
+        onTap: () async {
+          final response = await provider.addOrder();
+          response
+              ? Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const ConfirmOrder()))
+              : null;
+        });
   }
 
   Column _formItem(BuildContext context, String headText, String? hintText,

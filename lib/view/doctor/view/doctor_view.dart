@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import '../../../core/constants/image_constant.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -6,54 +8,62 @@ import '../../../core/init/language/locale_keys.g.dart';
 import '../../../core/widgets/rating_bar/rating_bar.dart';
 import '../../../product/widgets/stack/search_box.dart';
 import '../../../product/widgets/text/experience_rich_text.dart';
+import '../../department/model/department.dart';
 import '../model/doctor.dart';
 import '../view_model/doctor_view_model.dart';
 import 'doctor_profile.dart';
 
 class DoctorView extends StatelessWidget {
-  const DoctorView({Key? key}) : super(key: key);
+  const DoctorView({Key? key, this.department, this.searchText})
+      : super(key: key);
+  final Department? department;
+  final String? searchText;
 
-  final String _notFound = 'Not Found';
+  final String _notFound = '';
 
   @override
   Widget build(BuildContext context) {
     return BaseView<DoctorViewModel>(
         viewModel: DoctorViewModel(),
         onModelReady: (model) {
-          model.setContext(context);
-          model.init();
+          model.getDoctors(
+              departmentId: department?.sId, searchText: searchText);
         },
-        onPageBuilder: (context, viewModel) => Scaffold(
-              body: Padding(
-                padding: context.appPadding,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: context.lowValue),
-                    const SearchBox(isBack: true),
-                    SizedBox(height: context.normalValue * 1.5),
-                    Text(LocaleKeys.doctorList.paramLocale(['Heart']),
-                        style: context.textTheme.headline6!.copyWith(
-                            fontSize: 18, fontWeight: FontWeight.w600)),
-                    SizedBox(height: context.normalValue),
-                    Expanded(
-                      child: viewModel.fakeDoctorList.isNotEmpty
-                          ? _doctorsListBuilder(context, viewModel)
-                          : Center(child: Text(_notFound)),
-                    )
-                  ],
-                ),
-              ),
-            ));
+        onPageBuilder: (context, viewModel) => Observer(
+            builder: (context) => Scaffold(
+                  body: Padding(
+                    padding: context.appPadding,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: context.lowValue),
+                        const SearchBox(isBack: true),
+                        SizedBox(height: context.normalValue * 1.5),
+                        Text(
+                            LocaleKeys.doctorList.paramLocale(
+                                [department?.name ?? searchText ?? '']),
+                            style: context.textTheme.headline6!.copyWith(
+                                fontSize: 18, fontWeight: FontWeight.w600)),
+                        SizedBox(height: context.normalValue),
+                        Expanded(
+                          child: (viewModel.doctors != null &&
+                                  viewModel.doctors!.isNotEmpty)
+                              ? _doctorsListBuilder(context, viewModel)
+                              : _emptyDoctorList(context),
+                        )
+                      ],
+                    ),
+                  ),
+                )));
   }
 
   ListView _doctorsListBuilder(
       BuildContext context, DoctorViewModel viewModel) {
     return ListView.builder(
         padding: EdgeInsets.only(bottom: context.normalValue),
-        itemCount: viewModel.fakeDoctorList.length,
+        itemCount: viewModel.doctors!.length,
         itemBuilder: (context, index) {
-          return _doctorItem(context, viewModel.fakeDoctorList[index]);
+          return _doctorItem(context, viewModel.doctors![index]);
         });
   }
 
@@ -102,15 +112,24 @@ class DoctorView extends StatelessWidget {
   }
 
   CircleAvatar _doctorProfile(BuildContext context, Doctor item) {
-    return CircleAvatar(
-        radius: context.normalValue * 1.3,
-        child: Image.asset((item.profileUrl ?? 'serena').toImagePng,
-            fit: BoxFit.fill));
+    return item.profilUrl != null
+        ? CircleAvatar(
+            radius: context.normalValue * 1.3,
+            child: Image.network(item.profilUrl!.networkUrl,
+                fit: BoxFit.fill,
+                errorBuilder: (context, error, stackTrace) => Image.asset(
+                    ImageConstants.instance.profileImage.toImagePng,
+                    fit: BoxFit.fill)))
+        : CircleAvatar(
+            radius: context.normalValue * 1.3,
+            child: Image.asset(
+                (ImageConstants.instance.profileImage.toImagePng),
+                fit: BoxFit.fill));
   }
 
   Column _doctorNameAndRate(Doctor item, BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(item.name ?? _notFound,
+      Text((item.name ?? _notFound).doctorName,
           overflow: TextOverflow.ellipsis,
           style: context.textTheme.subtitle1!
               .copyWith(fontWeight: FontWeight.w600)),
@@ -120,7 +139,7 @@ class DoctorView extends StatelessWidget {
           Flexible(
               child: Text(
                   LocaleKeys.specialist
-                      .paramLocale([(item.specialist ?? '').toString()]),
+                      .paramLocale([(item.department?.name ?? '').toString()]),
                   overflow: TextOverflow.ellipsis,
                   style: context.textTheme.subtitle2!.copyWith(
                       letterSpacing: -0.2,
@@ -149,5 +168,15 @@ class DoctorView extends StatelessWidget {
                 color: context.theme.colorScheme.onBackground))
       ],
     );
+  }
+
+  Center _emptyDoctorList(BuildContext context) {
+    return Center(
+        child: Text(
+            LocaleKeys.doctorNotFound
+                .paramLocale([department?.name ?? searchText ?? '']),
+            textAlign: TextAlign.center,
+            style: context.textTheme.headline6!
+                .copyWith(fontSize: 18, fontWeight: FontWeight.w600)));
   }
 }

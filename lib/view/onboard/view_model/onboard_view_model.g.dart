@@ -24,6 +24,22 @@ mixin _$OnboardViewModel on _OnboardViewModelBase, Store {
     });
   }
 
+  final _$isFirstInstallAtom =
+      Atom(name: '_OnboardViewModelBase.isFirstInstall');
+
+  @override
+  bool get isFirstInstall {
+    _$isFirstInstallAtom.reportRead();
+    return super.isFirstInstall;
+  }
+
+  @override
+  set isFirstInstall(bool value) {
+    _$isFirstInstallAtom.reportWrite(value, super.isFirstInstall, () {
+      super.isFirstInstall = value;
+    });
+  }
+
   final _$pageViewItemIndexAtom =
       Atom(name: '_OnboardViewModelBase.pageViewItemIndex');
 
@@ -38,6 +54,15 @@ mixin _$OnboardViewModel on _OnboardViewModelBase, Store {
     _$pageViewItemIndexAtom.reportWrite(value, super.pageViewItemIndex, () {
       super.pageViewItemIndex = value;
     });
+  }
+
+  final _$isFirstInstallUpdateAsyncAction =
+      AsyncAction('_OnboardViewModelBase.isFirstInstallUpdate');
+
+  @override
+  Future<void> isFirstInstallUpdate() {
+    return _$isFirstInstallUpdateAsyncAction
+        .run(() => super.isFirstInstallUpdate());
   }
 
   final _$_OnboardViewModelBaseActionController =
@@ -55,9 +80,21 @@ mixin _$OnboardViewModel on _OnboardViewModelBase, Store {
   }
 
   @override
+  void isFirtInstallControl() {
+    final _$actionInfo = _$_OnboardViewModelBaseActionController.startAction(
+        name: '_OnboardViewModelBase.isFirtInstallControl');
+    try {
+      return super.isFirtInstallControl();
+    } finally {
+      _$_OnboardViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 onboardList: ${onboardList},
+isFirstInstall: ${isFirstInstall},
 pageViewItemIndex: ${pageViewItemIndex}
     ''';
   }

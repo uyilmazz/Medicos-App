@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicos_app/core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/widgets/rating_bar/rating_bar.dart';
@@ -9,7 +10,6 @@ class ProductItem extends StatelessWidget {
   const ProductItem({Key? key, required this.item}) : super(key: key);
 
   final Product item;
-  final String _notFoundImage = 'Nebulizer';
   final String _notFoundText = 'Item Not Found';
   @override
   Widget build(BuildContext context) {
@@ -39,11 +39,14 @@ class ProductItem extends StatelessWidget {
         },
         child: Align(
             alignment: Alignment.center,
-            child: Image.asset(
-                item.imageUrl != null
-                    ? item.imageUrl!.toImagePng
-                    : _notFoundImage.toImagePng,
-                fit: BoxFit.fill)),
+            child: item.imageUrl != null
+                ? Image.network(item.imageUrl!.networkUrl,
+                    errorBuilder: ((context, error, stackTrace) => Image.asset(
+                        ImageConstants.instance.imageNotFound.toImagePng,
+                        fit: BoxFit.fill)),
+                    fit: BoxFit.fill)
+                : Image.asset(ImageConstants.instance.imageNotFound.toImagePng,
+                    fit: BoxFit.fill)),
       );
 
   Column _productIngo(BuildContext context) {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
@@ -20,16 +22,16 @@ class UserProfile extends StatelessWidget {
         padding: context.appPadding,
         child: Column(
           children: [
-            const BackArrowAppBar(centerText: 'Profile'),
+            BackArrowAppBar(centerText: LocaleKeys.profile_profile.locale),
             SizedBox(height: context.mediumValue),
-            CircleAvatar(
-                radius: context.height * 0.1,
-                backgroundImage: AssetImage(_userProfileImage.toImagePng)),
+            _profileAvatar(context),
             SizedBox(height: context.normalValue),
-            _formItem(context, LocaleKeys.profile_name, 'Wade Warren'),
-            _formItem(context, LocaleKeys.profile_email, 'adc@gmail.com'),
-            _formItem(
-                context, LocaleKeys.profile_phoneNumber, '(603) 555-0123'),
+            _formItem(context, LocaleKeys.profile_name,
+                context.read<UserViewModel>().user?.name ?? ''),
+            _formItem(context, LocaleKeys.profile_email,
+                context.read<UserViewModel>().user?.email ?? ''),
+            _formItem(context, LocaleKeys.profile_phoneNumber,
+                context.read<UserViewModel>().user?.phoneNumber ?? ''),
             SizedBox(height: context.normalValue),
             CustomFabButton(
                 text: LocaleKeys.profile_editProfile.locale,
@@ -46,6 +48,17 @@ class UserProfile extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  CircleAvatar _profileAvatar(BuildContext context) {
+    return context.watch<UserViewModel>().user?.imageUrl != null
+        ? CircleAvatar(
+            radius: context.height * 0.1,
+            backgroundImage: NetworkImage(
+                context.watch<UserViewModel>().user!.imageUrl!.networkUrl))
+        : CircleAvatar(
+            radius: context.height * 0.1,
+            backgroundImage: AssetImage(_userProfileImage.toImagePng));
   }
 
   Column _formItem(BuildContext context, String headText, String? initText) {

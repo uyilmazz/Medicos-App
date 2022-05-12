@@ -5,35 +5,15 @@ part 'department.g.dart';
 
 @JsonSerializable()
 class Department extends MedicineModel {
-  final String? name;
-  final String? imageUrl;
+  @JsonKey(name: '_id')
+  String? sId;
+  String? name;
+  String? imageUrl;
 
-  Department(this.name, this.imageUrl);
-
-  static List<Department> getListFakeDepartment() {
-    return [
-      Department('Heart', 'Heart'),
-      Department('Brain', 'Brain'),
-      Department('Kidney', 'Kidney'),
-      Department('Lung', 'Lung'),
-    ];
-  }
-
-  static List<Department> getAllFakeDepartments() {
-    return [
-      Department('Heart', 'Heart'),
-      Department('Brain', 'Brain'),
-      Department('Kidney', 'Kidney'),
-      Department('Liver', 'Liver'),
-      Department('Stomach', 'Stomach'),
-      Department('Ear', 'Ear'),
-      Department('Nose', 'Nose'),
-      Department('Eye', 'Eye'),
-      Department('Dental', 'tooth'),
-      Department('Intestine', 'Intestine'),
-    ];
-  }
+  Department({this.sId, this.name, this.imageUrl});
 
   factory Department.fromJson(Map<String, dynamic> json) =>
       _$DepartmentFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DepartmentToJson(this);
 }

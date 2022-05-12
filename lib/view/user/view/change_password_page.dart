@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
+import '../view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
@@ -15,11 +18,11 @@ class ChangePasswordPage extends StatefulWidget {
 }
 
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
-  late GlobalKey _formKey;
+  late final GlobalKey<FormState> _formKey;
 
-  late TextEditingController _oldPasswordController;
-  late TextEditingController _newPasswordController;
-  late TextEditingController _confirmPasswordController;
+  late final TextEditingController _oldPasswordController;
+  late final TextEditingController _newPasswordController;
+  late final TextEditingController _confirmPasswordController;
 
   bool _oldPasswordObsure = true;
   bool _newPasswordObsure = true;
@@ -52,7 +55,22 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   _newPasswordFormItem,
                   _confirmPassswordFormItem,
                   SizedBox(height: context.height * 0.05),
-                  CustomFabButton(text: LocaleKeys.profile_done.locale)
+                  CustomFabButton(
+                      text: LocaleKeys.profile_done.locale,
+                      onTap: () async {
+                        if (_formKey.currentState!.validate()) {
+                          final result = await context
+                              .read<UserViewModel>()
+                              .updatePassword(
+                                  _newPasswordController.text.trim());
+                          if (result) {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginView()),
+                                (route) => false);
+                          }
+                        }
+                      })
                 ],
               ),
             )));
@@ -72,7 +90,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             obcure: _oldPasswordObsure,
             maxLine: 1,
             validateFunc: (value) {
-              return null;
+              if (context.read<UserViewModel>().user?.password ==
+                  _oldPasswordController.text) {
+                return null;
+              }
+              return LocaleKeys.profile_oldPasswordValidate.locale;
             }),
       );
 
@@ -90,7 +112,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             obcure: _newPasswordObsure,
             maxLine: 1,
             validateFunc: (value) {
-              return null;
+              if (value != null && value.length >= 3) {
+                return null;
+              }
+              return LocaleKeys.profile_newPasswordValidate.locale;
             }),
       );
 
@@ -108,7 +133,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             obcure: _confirmPasswordObsure,
             maxLine: 1,
             validateFunc: (value) {
-              return null;
+              if (value == _newPasswordController.text) {
+                return null;
+              }
+              return LocaleKeys.profile_confirmPasswordValidate.locale;
             }),
       );
 }

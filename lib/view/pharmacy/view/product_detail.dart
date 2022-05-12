@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import '../../../core/constants/image_constant.dart';
+import '../../user/view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -28,8 +31,13 @@ class ProductDetail extends StatelessWidget {
             builder: (context) => Scaffold(
                 floatingActionButtonLocation:
                     FloatingActionButtonLocation.centerFloat,
-                floatingActionButton:
-                    CustomFabButton(text: LocaleKeys.addToCart.locale),
+                floatingActionButton: CustomFabButton(
+                    text: LocaleKeys.addToCart.locale,
+                    onTap: () {
+                      context
+                          .read<UserViewModel>()
+                          .addProductInCart(product.id ?? '');
+                    }),
                 body: CustomScrollView(
                   slivers: [
                     SliverFillRemaining(
@@ -76,8 +84,17 @@ class ProductDetail extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           horizontal: context.mediumValue * 2,
                           vertical: context.normalValue * 1.2),
-                      child: Image.asset(product.imageUrl!.toImagePng,
-                          fit: BoxFit.fill));
+                      child: product.imageUrl != null
+                          ? Image.network(product.imageUrl!.networkUrl,
+                              errorBuilder: ((context, error, stackTrace) =>
+                                  Image.asset(
+                                      ImageConstants
+                                          .instance.imageNotFound.toImagePng,
+                                      fit: BoxFit.fill)),
+                              fit: BoxFit.fill)
+                          : Image.asset(
+                              ImageConstants.instance.imageNotFound.toImagePng,
+                              fit: BoxFit.fill));
                 })
             : const SizedBox());
   }
@@ -135,7 +152,7 @@ class ProductDetail extends StatelessWidget {
           SizedBox(height: context.normalValue),
           const HeadAndSeeAllText(
               headText: LocaleKeys.howToUse, isSeeAll: false),
-          Text((product.usage ?? ''),
+          Text((product.howToUse ?? ''),
               style: context.textTheme.bodySmall!
                   .copyWith(fontWeight: FontWeight.w500, fontSize: 12)),
           SizedBox(height: context.height * 0.08),

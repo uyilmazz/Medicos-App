@@ -20,7 +20,6 @@ class OnBoardScreen extends StatelessWidget {
         viewModel: OnboardViewModel(),
         onModelReady: (model) {
           model.init();
-          model.setContext(context);
         },
         onPageBuilder: (context, viewModel) => Scaffold(
               body: Padding(

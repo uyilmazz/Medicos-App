@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
+import '../view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
@@ -57,11 +60,23 @@ class _LoginViewState extends State<RegisterView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CustomFabButton(text: LocaleKeys.login_signUp.locale),
+                      CustomFabButton(
+                          text: LocaleKeys.login_signUp.locale,
+                          onTap: () {
+                            context.read<UserViewModel>().registerUser(
+                                _nameController.text,
+                                _emailController.text,
+                                _phoneNumberController.text,
+                                _passwordController.text);
+                          }),
                       SizedBox(height: context.lowValue),
                       AuthRichText(
                           textOne: LocaleKeys.login_alreadyHaveAnAccout.locale,
-                          textTwo: LocaleKeys.login_signIn.locale),
+                          textTwo: LocaleKeys.login_signIn.locale,
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const LoginView()));
+                          }),
                     ],
                   ),
                 )

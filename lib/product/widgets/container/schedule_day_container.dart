@@ -44,10 +44,15 @@ class ScheduleDayContainer extends StatelessWidget {
                 style: context.textTheme.subtitle2!.copyWith(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
-                    color: context.theme.colorScheme.background)),
+                    color: isSelected
+                        ? context.theme.colorScheme.onSecondary
+                        : context.theme.colorScheme.background)),
             Text(dayValue,
-                style: context.textTheme.headline6!
-                    .copyWith(fontWeight: FontWeight.w500)),
+                style: context.textTheme.headline6!.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: isSelected
+                        ? context.theme.colorScheme.onSecondary
+                        : context.theme.colorScheme.onSurface)),
           ]),
     );
   }

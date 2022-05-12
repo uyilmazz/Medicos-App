@@ -1,4 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import '../../home/view/home_page.dart';
+import '../view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../core/init/language/locale_keys.g.dart';
@@ -17,11 +22,12 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final String _userProfileImage = 'user_profile';
+  File? _profileImage;
 
-  late TextEditingController _nameController;
-  late TextEditingController _emailController;
-  late TextEditingController _phoneNumberController;
-  late GlobalKey _formKey;
+  late final TextEditingController _nameController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _phoneNumberController;
+  late final GlobalKey<FormState> _formKey;
 
   @override
   void initState() {
@@ -31,14 +37,16 @@ class _EditProfileState extends State<EditProfile> {
     _emailController = TextEditingController();
     _phoneNumberController = TextEditingController();
 
-    _nameController.text = 'Wade Warren';
-    _emailController.text = 'adc@gmail.com';
-    _phoneNumberController.text = '(603) 555-0123';
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      final _provider = Provider.of<UserViewModel>(context, listen: false);
+      _nameController.text = _provider.user?.name ?? '';
+      _emailController.text = _provider.user?.email ?? '';
+      _phoneNumberController.text = _provider.user?.phoneNumber ?? '';
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    _nameController.text = 'Wade Warren';
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
@@ -56,7 +64,7 @@ class _EditProfileState extends State<EditProfile> {
               _emailFormItem(context),
               _phoneNumberFormItem(context),
               SizedBox(height: context.normalValue),
-              CustomFabButton(text: LocaleKeys.profile_done.locale),
+              _fabButton(context),
             ],
           ),
         ),
@@ -69,17 +77,40 @@ class _EditProfileState extends State<EditProfile> {
       height: context.height * 0.22,
       child: Stack(
         children: [
-          CircleAvatar(
-              radius: context.height * 0.1,
-              backgroundImage: AssetImage(_userProfileImage.toImagePng)),
+          _profileAvatar(context),
           Positioned(
               bottom: context.lowValue * 0.4,
               right: context.lowValue,
-              child:
-                  IconContainer(iconName: 'camera'.toIconPng, paddingValue: 11))
+              child: IconContainer(
+                  onTap: () async {
+                    var picture = await ImagePicker()
+                        .pickImage(source: ImageSource.camera);
+                    if (picture != null) {
+                      setState(() {
+                        _profileImage = File(picture.path);
+                      });
+                    }
+                  },
+                  iconName: 'camera'.toIconPng,
+                  paddingValue: 11))
         ],
       ),
     );
+  }
+
+  CircleAvatar _profileAvatar(BuildContext context) {
+    return _profileImage != null
+        ? CircleAvatar(
+            radius: context.height * 0.1,
+            backgroundImage: FileImage(_profileImage!))
+        : context.watch<UserViewModel>().user?.imageUrl != null
+            ? CircleAvatar(
+                radius: context.height * 0.1,
+                backgroundImage: NetworkImage(
+                    context.watch<UserViewModel>().user!.imageUrl!.networkUrl))
+            : CircleAvatar(
+                radius: context.height * 0.1,
+                backgroundImage: AssetImage(_userProfileImage.toImagePng));
   }
 
   Column _nameFormItem(BuildContext context) {
@@ -128,4 +159,27 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
   }
+
+  Widget _fabButton(BuildContext context) => CustomFabButton(
+      text: LocaleKeys.profile_done.locale,
+      onTap: () async {
+        final response = await context.read<UserViewModel>().updateProfile(
+            name: _nameController.text,
+            email: _emailController.text,
+            phoneNumber: _phoneNumberController.text,
+            imagePath: _profileImage?.path);
+        if (response) {
+          FocusScope.of(context).unfocus();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              behavior: SnackBarBehavior.floating,
+              backgroundColor: context.theme.scaffoldBackgroundColor,
+              elevation: 3,
+              content: Text(LocaleKeys.profile_profileUpdatedMessage.locale,
+                  style: context.textTheme.subtitle1!
+                      .copyWith(color: context.theme.colorScheme.primary))));
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => HomePage()),
+              (route) => false);
+        }
+      });
 }

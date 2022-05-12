@@ -1,39 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import '../../../core/constants/image_constant.dart';
+import '../../../core/init/language/locale_keys.g.dart';
+import '../../department/view_model/department_view_model.dart';
+import 'home_content.dart';
+import '../../user/view/login_page.dart';
+import '../../user/view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
 import '../../doctor/view_model/doctor_view_model.dart';
 import '../../../core/base/view/base_widget.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
-import '../../../core/init/language/locale_keys.g.dart';
-import '../../../product/widgets/container/available_doctor_item.dart';
-import '../../../product/widgets/container/home_page_item.dart';
-import '../../../product/widgets/row/head_text_see_all.dart';
-import '../../../product/widgets/row/home_app.dart';
-import '../../../product/widgets/stack/search_box.dart';
 import '../../department/view/department_view.dart';
 import '../../pharmacy/view/pharmacy_view.dart';
+import '../../user/view/user_appointment.dart';
+import '../../user/view/user_profile.dart';
 import '../view_model/home_view_model.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  final DoctorViewModel _doctorViewModel = DoctorViewModel();
+  final _doctorViewModel = DoctorViewModel();
+  final _departmentViewModel = DepartmentViewModel();
+
+  List<Widget> pages = [
+    HomeContent(),
+    const DepartmentPage(),
+    const PharmacyView()
+  ];
 
   @override
   Widget build(BuildContext context) {
     return BaseView<HomeViewModel>(
       viewModel: HomeViewModel(),
       onModelReady: (model) {
-        model.setContext(context);
         _doctorViewModel.init();
         model.init();
       },
-      onPageBuilder: (context, homeViewModel) => Scaffold(
-          bottomNavigationBar: _buildNavigationBar(context, homeViewModel),
-          body: Padding(
-            padding: context.appPadding,
-            child: _setContent(context, homeViewModel),
-          )),
+      onPageBuilder: (context, homeViewModel) => Observer(
+          builder: (context) => Scaffold(
+              bottomNavigationBar: _buildNavigationBar(context, homeViewModel),
+              body: SizedBox(
+                height: context.height,
+                child: Stack(
+                  children: [
+                    Padding(
+                        padding: context.appPadding,
+                        child: _setContent(
+                            context, homeViewModel, _departmentViewModel)),
+                    homeViewModel.bottomNavigationBarIndex == 3
+                        ? _showBottomMenu(context, homeViewModel)
+                        : const SizedBox()
+                  ],
+                ),
+              ))),
     );
   }
 
@@ -62,10 +82,14 @@ class HomePage extends StatelessWidget {
                     },
                     currentIndex: homeViewModel.bottomNavigationBarIndex,
                     items: [
-                      _bottomNavBarItem(homeViewModel, context, 'Home', 0),
-                      _bottomNavBarItem(homeViewModel, context, 'doctors', 1),
-                      _bottomNavBarItem(homeViewModel, context, 'Medicine', 2),
-                      _bottomNavBarItem(homeViewModel, context, 'Menu', 3),
+                      _bottomNavBarItem(homeViewModel, context,
+                          ImageConstants.instance.bottomNavigationHome, 0),
+                      _bottomNavBarItem(homeViewModel, context,
+                          ImageConstants.instance.bottomNavigationDoctors, 1),
+                      _bottomNavBarItem(homeViewModel, context,
+                          ImageConstants.instance.bottomNavigationMedicine, 2),
+                      _bottomNavBarItem(homeViewModel, context,
+                          ImageConstants.instance.bottomNavigationMEnu, 3),
                     ],
                   ),
                 ),
@@ -82,68 +106,99 @@ class HomePage extends StatelessWidget {
         label: '');
   }
 
-  Widget _setContent(BuildContext context, HomeViewModel homeViewModel) =>
+  Widget _setContent(BuildContext context, HomeViewModel homeViewModel,
+          DepartmentViewModel departmentViewModel) =>
       Observer(builder: (context) {
-        return homeViewModel.bottomNavigationBarIndex == 0
-            ? _homeContent(context, homeViewModel)
-            : homeViewModel.bottomNavigationBarIndex == 1
-                ? DepartmentPage(department: homeViewModel.getAllDepartments)
-                : homeViewModel.bottomNavigationBarIndex == 2
-                    ? const PharmacyView()
-                    : const SizedBox();
+        return pages[homeViewModel.bottomNavigationBarIndex != 3
+            ? homeViewModel.bottomNavigationBarIndex
+            : homeViewModel.beforeBottomNavigationBarIndex];
       });
 
-  Widget _homeContent(BuildContext context, HomeViewModel homeViewModel) =>
-      SingleChildScrollView(
-        child: Column(
-          children: [
-            HomeAppBar(imageUrl: 'profile'.toImagePng),
-            const SearchBox(),
-            SizedBox(height: context.normalValue),
-            const HeadAndSeeAllText(headText: LocaleKeys.departments),
-            SizedBox(height: context.lowValue),
-            _scroolMedicineItem(
-                context, homeViewModel, homeViewModel.fakeDepartment),
-            SizedBox(height: context.normalValue),
-            const HeadAndSeeAllText(headText: LocaleKeys.pharmacy),
-            SizedBox(height: context.normalValue),
-            _scroolMedicineItem(
-                context, homeViewModel, homeViewModel.fakePharmacy),
-            SizedBox(height: context.mediumValue),
-            const HeadAndSeeAllText(headText: LocaleKeys.availableDoctors),
-            SizedBox(height: context.normalValue),
-            _scroolDoctorItem(
-                context, homeViewModel, _doctorViewModel.fakeDoctorList),
-            SizedBox(height: context.normalValue),
-          ],
-        ),
-      );
+  Widget _showBottomMenu(BuildContext context, HomeViewModel viewModel) {
+    return Positioned(
+      bottom: 0,
+      left: 0,
+      right: 0,
+      child: Stack(
+        children: [
+          GestureDetector(
+            onTap: () {
+              viewModel.showBottomSheetClose();
+            },
+            child: Container(
+                height: context.height,
+                width: context.width,
+                color: Colors.grey.withOpacity(0.4)),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 2),
+              height: context.height * 0.3,
+              width: context.width,
+              padding: EdgeInsets.only(
+                  top: context.mediumValue, left: context.normalValue),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(context.mediumValue),
+                    topRight: Radius.circular(context.mediumValue),
+                    bottomLeft: Radius.circular(context.normalValue),
+                    bottomRight: Radius.circular(context.normalValue)),
+                gradient: LinearGradient(colors: [
+                  context.theme.colorScheme.primary,
+                  context.theme.colorScheme.primary.withOpacity(0.3)
+                ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+              ),
+              child: _showBottomMenuColums(context),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-  Widget _scroolMedicineItem(
-          BuildContext context, HomeViewModel homeViewModel, List? items) =>
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Wrap(
-            alignment: WrapAlignment.start,
-            spacing: context.lowValue,
-            children: items == null
-                ? [const SizedBox()]
-                : items
-                    .map((department) => HomePageItem(medicineItem: department))
-                    .toList()),
-      );
+  Column _showBottomMenuColums(BuildContext context) {
+    return Column(
+      children: [
+        _shotBottomMenuItem(
+            context,
+            ImageConstants.instance.showBottomMenuProfile,
+            LocaleKeys.profile_profile.locale, () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const UserProfile()));
+        }),
+        _shotBottomMenuItem(
+            context,
+            ImageConstants.instance.showBottomMenuAppointment,
+            LocaleKeys.userAppointment_myAppointments.locale, () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const UserAppointment()));
+        }),
+        _shotBottomMenuItem(
+            context,
+            ImageConstants.instance.showBottomMenuLogout,
+            LocaleKeys.logout.locale, () {
+          context.read<UserViewModel>().logout();
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => const LoginView()),
+              (route) => false);
+        }),
+      ],
+    );
+  }
 
-  Widget _scroolDoctorItem(BuildContext context, HomeViewModel homeViewModel,
-          List? availableDoctorList) =>
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Wrap(
-            alignment: WrapAlignment.start,
-            spacing: context.lowValue,
-            children: availableDoctorList == null
-                ? [const SizedBox()]
-                : availableDoctorList
-                    .map((doctor) => AvailabeDoctorItem(doctor: doctor))
-                    .toList()),
-      );
+  ListTile _shotBottomMenuItem(
+      BuildContext context, String iconText, String text, Function()? onTap) {
+    return ListTile(
+      onTap: onTap,
+      leading: Image.asset(iconText.toIconPng),
+      title: Text(text,
+          style: context.textTheme.subtitle1!.copyWith(
+              color: context.theme.colorScheme.onSecondary,
+              fontWeight: FontWeight.w600,
+              fontSize: 23)),
+    );
+  }
 }

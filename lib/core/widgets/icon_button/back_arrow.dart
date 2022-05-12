@@ -7,6 +7,7 @@ class BackArrowButton extends IconButton {
             key: key,
             padding: EdgeInsets.zero,
             onPressed: () {
+              ScaffoldMessenger.of(context).removeCurrentSnackBar();
               Navigator.of(context).pop();
             },
             icon: const Icon(Icons.arrow_back),

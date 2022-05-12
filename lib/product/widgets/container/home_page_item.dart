@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/constants/image_constant.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/string_extension.dart';
 import '../../../view/home/model/medicine_model.dart';
@@ -41,10 +42,15 @@ class HomePageItem extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(medicineItem.imageUrl?.toImagePng ?? "Eye".toImagePng,
+        Image.network(medicineItem.imageUrl!.networkUrl,
             width: context.width * 0.14,
             height: context.height * 0.08,
-            fit: BoxFit.fill),
+            fit: BoxFit.fill,
+            errorBuilder: (context, error, stackTrace) => Image.asset(
+                ImageConstants.instance.imageNotFound.toImagePng,
+                height: context.height * 0.08,
+                width: context.width * 0.14,
+                fit: BoxFit.fill)),
         SizedBox(height: context.normalValue),
         FlexibleText(medicineItem.name ?? "Not Found", context,
             color: isSelected

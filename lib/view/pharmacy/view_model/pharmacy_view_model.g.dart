@@ -9,19 +9,18 @@ part of 'pharmacy_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$PharmacyViewModel on _PharmacyViewModelBase, Store {
-  final _$fakePharmacyListAtom =
-      Atom(name: '_PharmacyViewModelBase.fakePharmacyList');
+  final _$pharmacyAtom = Atom(name: '_PharmacyViewModelBase.pharmacy');
 
   @override
-  List<Pharmacy> get fakePharmacyList {
-    _$fakePharmacyListAtom.reportRead();
-    return super.fakePharmacyList;
+  List<Pharmacy>? get pharmacy {
+    _$pharmacyAtom.reportRead();
+    return super.pharmacy;
   }
 
   @override
-  set fakePharmacyList(List<Pharmacy> value) {
-    _$fakePharmacyListAtom.reportWrite(value, super.fakePharmacyList, () {
-      super.fakePharmacyList = value;
+  set pharmacy(List<Pharmacy>? value) {
+    _$pharmacyAtom.reportWrite(value, super.pharmacy, () {
+      super.pharmacy = value;
     });
   }
 
@@ -72,19 +71,33 @@ mixin _$PharmacyViewModel on _PharmacyViewModelBase, Store {
     });
   }
 
-  final _$_PharmacyViewModelBaseActionController =
-      ActionController(name: '_PharmacyViewModelBase');
+  final _$getPharmacyAsyncAction =
+      AsyncAction('_PharmacyViewModelBase.getPharmacy');
 
   @override
-  void changeTabBarItem(int index) {
-    final _$actionInfo = _$_PharmacyViewModelBaseActionController.startAction(
-        name: '_PharmacyViewModelBase.changeTabBarItem');
-    try {
-      return super.changeTabBarItem(index);
-    } finally {
-      _$_PharmacyViewModelBaseActionController.endAction(_$actionInfo);
-    }
+  Future<void> getPharmacy({int? limit = 0}) {
+    return _$getPharmacyAsyncAction.run(() => super.getPharmacy(limit: limit));
   }
+
+  final _$getProductsAsyncAction =
+      AsyncAction('_PharmacyViewModelBase.getProducts');
+
+  @override
+  Future<void> getProducts() {
+    return _$getProductsAsyncAction.run(() => super.getProducts());
+  }
+
+  final _$changeTabBarItemAsyncAction =
+      AsyncAction('_PharmacyViewModelBase.changeTabBarItem');
+
+  @override
+  Future<void> changeTabBarItem(int index) {
+    return _$changeTabBarItemAsyncAction
+        .run(() => super.changeTabBarItem(index));
+  }
+
+  final _$_PharmacyViewModelBaseActionController =
+      ActionController(name: '_PharmacyViewModelBase');
 
   @override
   void changePageBuilderIndex(dynamic index) {
@@ -100,7 +113,7 @@ mixin _$PharmacyViewModel on _PharmacyViewModelBase, Store {
   @override
   String toString() {
     return '''
-fakePharmacyList: ${fakePharmacyList},
+pharmacy: ${pharmacy},
 selectedItemIndex: ${selectedItemIndex},
 products: ${products},
 pageBuilderIndex: ${pageBuilderIndex}
